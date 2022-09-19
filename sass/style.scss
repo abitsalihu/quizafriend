@@ -1,5 +1,5 @@
 $white: #ffffff;
-$landing-bg: #9495ff;
+$landing-bg: #f67280;
 $yellow: #facb70;
 $green: #7fb77e;
 
@@ -11,14 +11,21 @@ $green: #7fb77e;
 * {
   margin: 0;
 }
-html,
-body {
-  height: 100%;
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
 }
 body {
   font-family: "Poppins", sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: none !important;
+  background-color: $landing-bg;
+  display: flex;
+  justify-content: center;
+  color: $white;
 }
 img,
 picture,
@@ -46,4 +53,135 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+}
+
+.title {
+  margin-top: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 455px;
+  font-size: 2.25rem;
+  position: relative;
+
+  &__first {
+    color: $white;
+    z-index: 999;
+  }
+
+  &__second {
+    background-color: $yellow;
+    height: 80%;
+    margin-left: -35px;
+    padding-left: 38px;
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+
+    display: flex;
+    align-items: center;
+    animation: animate 8s ease infinite;
+
+    &--self {
+      animation: displaySelf 8s ease infinite;
+      position: relative;
+    }
+    &--friend {
+      margin-left: -75px;
+      animation: displayFriend 8s ease infinite;
+      position: relative;
+    }
+  }
+}
+
+@keyframes animate {
+  0% {
+    width: 0px;
+    background-color: $yellow;
+  }
+  25% {
+    width: 160px;
+  }
+  43% {
+    background-color: $yellow;
+  }
+  50% {
+    width: 0px;
+    background-color: $green;
+  }
+  75% {
+    width: 250px;
+  }
+  78% {
+    width: 250px;
+  }
+  93% {
+    background-color: $green;
+  }
+  100% {
+    width: 0px;
+  }
+}
+
+@keyframes displaySelf {
+  0% {
+    color: $white;
+    z-index: 999;
+  }
+  25% {
+    color: $white;
+    z-index: 999;
+  }
+  48% {
+    color: $white;
+    z-index: 1;
+  }
+  50% {
+    // background-color: $yellow;
+    color: $green;
+    z-index: 1;
+  }
+  90% {
+    color: $green;
+    z-index: 1;
+  }
+  95% {
+    color: $white;
+    z-index: 999;
+  }
+  100% {
+    color: $white;
+    z-index: 999;
+  }
+}
+
+@keyframes displayFriend {
+  0% {
+    color: $yellow;
+    z-index: 1;
+  }
+  25% {
+    color: $yellow;
+    z-index: 1;
+  }
+  48% {
+    color: $yellow;
+    z-index: 1;
+  }
+  50% {
+    // background-color: $yellow;
+    color: $white;
+    z-index: 999;
+  }
+  90% {
+    color: $white;
+    z-index: 999;
+  }
+  95% {
+    color: $white;
+    z-index: 999;
+  }
+  100% {
+    color: $yellow;
+    z-index: 1;
+  }
 }
