@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Quiz your self/friend</title>
+    <title>Quiz user self/friend</title>
   </head>
   <body>
     <div class="title">
@@ -23,11 +23,15 @@
     </div>
 
     <div class="buttons">
-      <button class="buttons__btn take" data-page="take" background="takeQuiz">
+      <button
+        class="buttons__btn taking"
+        data-page="take"
+        background="takeQuiz"
+      >
         Take a quiz
       </button>
       <button
-        class="buttons__btn create"
+        class="buttons__btn creating"
         data-page="create"
         background="createQuiz"
       >
@@ -35,7 +39,24 @@
       </button>
     </div>
 
-    <div class="test"></div>
+    <div class="create">
+      <div class="create__hquestions">
+        <div class="create__hquestions--title">
+          <h1>How many questions would you like?</h1>
+        </div>
+        <div class="create__hquestions--btns buttons">
+          <button class="choose-btn" data-set="5">5</button>
+          <button class="choose-btn" data-set="10">10</button>
+          <button class="choose-btn" data-set="20">20</button>
+          <input type="text" class="user-value" placeholder="32" />
+        </div>
+        <div class="create__hquestions--explanation">
+          You can choose to create 1 to 35 questions!
+        </div>
+
+        <button class="create__btn">Start creating</button>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
