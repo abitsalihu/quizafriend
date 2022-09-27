@@ -123,17 +123,125 @@ const codingQuestion1 = new Quiz(
 // ! ------------------------------
 
 //? START OF GEOGRAPHY QUESTIONS
-
-const geographyQuestion2 = new Quiz(
-  `"What's the population of Kosovo"?`,
-  ["2 Million", "1.5 Million", "3 Million", "1 Million"],
-  "a",
+const geographyQuestion16 = new Quiz(
+  "Which country is the largest in South America by surface area?",
+  ["Colombia", "Brazil", "Peru", "Argentina"],
+  "b",
   "none",
   true
 );
+const geographyQuestion15 = new Quiz(
+  "Which country is the largest in the world by surface area?",
+  ["Russia", "China", "Canada", "USA"],
+  "a",
+  geographyQuestion16,
+  false
+);
+const geographyQuestion14 = new Quiz(
+  "What is the most widely spoken language of the world (by first language speakers)?",
+  ["English", "Mandarin", "Spanish", "Hindi"],
+  "b",
+  geographyQuestion15,
+  false
+);
+
+const geographyQuestion13 = new Quiz(
+  "What is the (approximate) number of UN member states in the world in 2014?",
+  ["193", "253", "153", "103"],
+  "a",
+  geographyQuestion14,
+  false
+);
+const geographyQuestion12 = new Quiz(
+  "What is Earth's second largest continent by surface size?",
+  ["Europa", "North America", "Africa", "South America"],
+  "c",
+  geographyQuestion13,
+  false
+);
+
+const geographyQuestion11 = new Quiz(
+  "Which country has the largest population in South America?",
+  ["Peru", "Colombia", "Argentina", "Brazil"],
+  "d",
+  geographyQuestion12,
+  false
+);
+
+const geographyQuestion10 = new Quiz(
+  "Which country is the second largest in Asia by surface area?",
+  ["China", "Kazakhstan", "Saudi Arabia", "India"],
+  "a",
+  geographyQuestion11,
+  false
+);
+
+const geographyQuestion9 = new Quiz(
+  "What is the northermost capital of an independent nation in the world?",
+  ["Helsinki", "Reykjavik", "Ulaanbaatar", "Ottawa"],
+  "b",
+  geographyQuestion10,
+  false
+);
+
+const geographyQuestion8 = new Quiz(
+  "Which country has the longest coastline in the world?",
+  ["Canada", "Russia", "Indonesia", "Australia"],
+  "a",
+  geographyQuestion9,
+  false
+);
+
+const geographyQuestion7 = new Quiz(
+  "What is Earth's largest continent by surface size?",
+  ["Africa", "North America", "Europe", "Asia"],
+  "d",
+  geographyQuestion8,
+  false
+);
+
+const geographyQuestion6 = new Quiz(
+  "What is by area the smallest independent country on Earth?",
+  ["San Marino", "Malta", "Vatican", "Faroe Island"],
+  "c",
+  geographyQuestion7,
+  false
+);
+
+const geographyQuestion5 = new Quiz(
+  "What is the longest river in South America?",
+  ["Amazon", "Padeira", "Chenab", "Cano Cristals"],
+  "a",
+  geographyQuestion6,
+  false
+);
+
+const geographyQuestion4 = new Quiz(
+  "Which continent has the most independent countries (including island nations)?",
+  ["Europe", "Africa", "Asia", "Oceania"],
+  "b",
+  geographyQuestion5,
+  false
+);
+
+const geographyQuestion3 = new Quiz(
+  "What is the highest mountain on Earth (from sea level to top)?",
+  ["Kilimanjaro", "Mount Everest", "K2", "Matterhorn"],
+  "b",
+  geographyQuestion4,
+  false
+);
+
+const geographyQuestion2 = new Quiz(
+  "What's the capital of Kosovo?",
+  ["Prishtina", "Mitrovica", "New York", "Peja"],
+  "a",
+  geographyQuestion3,
+  false
+);
 
 const geographyQuestion1 = new Quiz(
-  `How many continents are there?`,
+  "How many continents are there?",
   ["12", "6", "8", "7"],
   "d",
   geographyQuestion2,
