@@ -17,20 +17,27 @@ const Quiz = function (
 
 //? coding quiz
 
-const codingQuestion10 = new Quiz(
-  "What property do we use to create a website responsive?",
-  ["@animation", "@media", "@keyframes", "@break"],
-  "b",
+const codingQuestion11 = new Quiz(
+  "none",
+  ["none", "none", "none", "none"],
+  "none",
   "none",
   true
 );
 
+const codingQuestion10 = new Quiz(
+  "What property do we use to create a website responsive?",
+  ["@animation", "@media", "@keyframes", "@break"],
+  "b",
+  codingQuestion11,
+  false
+);
+
 const codingQuestion9 = new Quiz(
   "What tag do we use to create a link in HTML?",
-  ["<a>", "<img>", `href=""`, "<link>"],
+  ["a", "img", "href", "link"],
   "c",
   codingQuestion10,
-
   false
 );
 
@@ -111,6 +118,8 @@ const codingQuestion1 = new Quiz(
   false
 );
 
+//? end of coding questions
+
 //! STARTING CODE FOR QUIZES
 
 let currentQuestion;
@@ -120,19 +129,27 @@ let nextPage;
 
 let userChosenAnswer;
 
+let clickedAnswer;
+
 //!
 
 //? Landing PAGE DOM
+const body = document.querySelector("body");
 const title = document.querySelector(".title");
 const buttons = document.querySelector(".buttons");
 const createQuizBTN = document.querySelector(".creating");
 const takeQuizBTN = document.querySelector(".taking");
-const body = document.querySelector("body");
+
+//? TAKE QUIZ
 const chooseQuiz = document.querySelectorAll(".take-quiz-btn");
+
+//?  START DOM
 const startQuiz = document.querySelector(".start");
 const answersBtnCon = document.querySelector(".start__answers");
 const allAnswers = document.querySelectorAll(".start__answers--btn");
-// console.log(answersBtnCon);
+const startBtns = document.querySelectorAll(".start__btn");
+const failBtns = document.querySelector(".start__fail");
+console.log(failBtns);
 console.log(allAnswers);
 
 //? Audio DOM
@@ -215,8 +232,6 @@ buttons.addEventListener("click", function (e) {
 
 //? CHOOSE QUIZ BUTTONS
 
-let s;
-
 chooseQuiz.forEach(function (e) {
   e.addEventListener("click", function () {
     nextPage.classList.add("title-escape");
@@ -224,6 +239,7 @@ chooseQuiz.forEach(function (e) {
     if (currentQuiz === "codingQuestion1") {
       addCurrentQuestion(codingQuestion1);
     } else if (currentQuiz === "geographyQuestion1") {
+      addCurrentQuestion(geographyQuestion1);
       console.log("geographyQuestion1");
     } else if (currentQuiz === "worldCupQuestion1") {
       console.log("worldCupQuestion1");
@@ -240,24 +256,84 @@ chooseQuiz.forEach(function (e) {
     }, 1500);
 
     createStartQuestion();
+    console.log(currentQuestion);
+    console.log(correctAnswer);
+    console.log(nextQuestion);
 
-    return currentQuestion, correctAnswer, nextQuestion, s;
+    return currentQuestion, correctAnswer, nextQuestion;
   });
-
-  // return currentQuestion, correctAnswer, nextQuestion;
 });
 
 answersBtnCon.addEventListener("click", function (e) {
   if (e.target.classList.contains("start__answers")) return;
   userChosenAnswer = e.target.getAttribute("data-set");
   addActive(e.target);
-  console.log(userChosenAnswer);
+  clickedAnswer = e.target;
   return userChosenAnswer;
 });
 
-// allAnswers.forEach(function (e) {
+startBtns.forEach((e) => {
+  e.addEventListener("click", () => {
+    console.log(e);
+    if (!currentQuestion.lastQuestion) {
+      if (e.classList.contains("start__submit")) {
+        if (userChosenAnswer === correctAnswer) {
+          body.classList.add("correct-answer");
+          addCurrentQuestion(currentQuestion.nextQuestion);
+          console.log(currentQuestion);
+          console.log(correctAnswer);
+          console.log(nextQuestion);
+          console.log(userChosenAnswer);
+          e.style.display = "none";
+          startBtns[1].style.display = "flex";
+          answersBtnCon.style.pointerEvents = "none";
+          document.querySelector(".start__title").innerHTML = `
+          <h1>
+            CORRECT!
+          </h1>
+          `;
+        } else {
+          body.classList.add("wrong-bg");
+          document.querySelector(".start__title").innerHTML = `
+          <h1>
+            WRONG!
+          </h1>
+          `;
+          document.querySelector(".start__title").style.color = "#f5f5f5";
+          // addWrong(e.target);
+          e.style.display = "none";
+          failBtns.style.display = "flex";
+          answersBtnCon.style.pointerEvents = "none";
+          document.querySelector(`.${correctAnswer}`).classList.add("active");
+          clickedAnswer.classList.add("wrong-answer");
+        }
+      }
+      if (e.classList.contains("start__next")) {
+        createStartQuestion();
+        body.classList.remove("correct-answer");
+        e.style.display = "none";
+        userChosenAnswer = "none";
+        startBtns[0].style.display = "flex";
+        answersBtnCon.style.pointerEvents = "all";
+        allAnswers.forEach((e) => {
+          e.classList.remove("active");
+        });
+      }
+    } else {
+      document.querySelector(".start__title").innerHTML = `
+        <h1>
+          CONGRATULATIONS!!!
+        </h1>
+        `;
+      body.classList.remove("correct-answer");
+      body.classList.add("correct-answer");
+      startBtns[1].style.display = "none";
 
-//   e.addEventListener("click", function () {
-//     console.log(e.target);
-//   });
-// });
+      answersBtnCon.style.display = "none";
+      failBtns.style.display = "flex";
+    }
+
+    if (e.classList.contains("start__try")) {
+    }
+  });
+});
