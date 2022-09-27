@@ -79,6 +79,8 @@ h6 {
   font-size: 2.25rem;
   position: relative;
   // border: 1px solid red;
+  // margin-top: -5rem;
+
   // display: none;
 
   &__first {
@@ -114,11 +116,13 @@ h6 {
   // border: 1px solid red;
   width: 80%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   // gap: 10px;
-  height: 10rem;
+  // height: 10rem;
+  gap: 60px;
   margin-top: -20rem;
+
   // display: none;
 
   &__btn {
@@ -288,30 +292,40 @@ h6 {
 
 .take {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 100px;
+  gap: 85px;
   display: none;
+  // border: 1px solid red;
+
+  margin-top: 250px;
+  margin-bottom: 75px;
 
   &__title {
     font-size: 2.25rem;
+    height: 15%;
+    // display: flex;
+    // align-items: flex-end;
     // letter-spacing: 1.5px;
+    // border: 1px solid blue;
+    // margin-bottom: 100px;
   }
 
   &__showcase {
-    width: 80%;
-    min-height: 500px;
+    width: 90%;
+    height: 85%;
     // border: 1px solid red;
     display: flex;
     justify-content: center;
+    gap: 100px;
     flex-wrap: wrap;
 
     &--con {
-      height: 405px;
-      width: 305px;
+      height: 375px;
+      max-width: 275px;
       margin: 0px 30px;
       // border: 1px solid blue;
       position: relative;
@@ -320,7 +334,7 @@ h6 {
       transform: rotateY(0deg);
       display: flex;
       justify-content: center;
-      margin-top: 100px;
+      // margin-top: 100px;
 
       &_top {
         width: 80%;
@@ -330,6 +344,7 @@ h6 {
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
         gap: 2px;
         background-color: $yellow-light;
         padding: 5px 0px;
@@ -435,14 +450,26 @@ h6 {
   gap: 100px;
   color: $black;
   display: none;
+  // border: 1px solid red;
 
   &__title {
     font-size: 1.75rem;
-    // border: 1px solid red;
     text-align: center;
     max-width: 900px;
+    // border: 1px solid blue;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &--qnum {
+      margin-top: 5px;
+      // color: #77787b;
+      font-weight: 400;
+    }
   }
   &__answers {
+    // border: 1px solid blue;
     // border: 1px solid red;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -689,7 +716,7 @@ h6 {
   }
 
   100% {
-    transform: translateX(1000px);
+    transform: translateX(1500px);
     display: none;
   }
 }
@@ -705,7 +732,23 @@ h6 {
   }
 
   100% {
-    transform: translateX(-1000px);
+    transform: translateX(-1500px);
     display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .title {
+    border: 1px solid blue;
+    font-size: 1.75rem;
+    // margin-right: 5px;
+
+    &__second {
+      border: 1px solid red;
+      &--friend {
+        border: 1px solid red;
+        margin-left: -77.5px;
+      }
+    }
   }
 }

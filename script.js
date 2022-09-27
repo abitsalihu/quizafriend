@@ -6,13 +6,15 @@ const Quiz = function (
   [answerOne, answerTwo, answerThree, answerFour],
   correctAnswer,
   nextQuestion,
-  lastQuestion
+  lastQuestion,
+  numberQuestion
 ) {
   this.question = question;
   this.answers = [answerOne, answerTwo, answerThree, answerFour];
   this.correctAnswer = correctAnswer;
   this.nextQuestion = nextQuestion;
   this.lastQuestion = lastQuestion;
+  this.whichQuestion = numberQuestion;
 };
 
 //? coding quiz
@@ -22,7 +24,8 @@ const codingQuestion11 = new Quiz(
   ["none", "none", "none", "none"],
   "none",
   "none",
-  true
+  true,
+  11
 );
 
 const codingQuestion10 = new Quiz(
@@ -30,7 +33,8 @@ const codingQuestion10 = new Quiz(
   ["@animation", "@media", "@keyframes", "@break"],
   "b",
   codingQuestion11,
-  false
+  false,
+  10
 );
 
 const codingQuestion9 = new Quiz(
@@ -38,7 +42,8 @@ const codingQuestion9 = new Quiz(
   ["a", "img", "href", "link"],
   "c",
   codingQuestion10,
-  false
+  false,
+  9
 );
 
 const codingQuestion8 = new Quiz(
@@ -47,7 +52,8 @@ const codingQuestion8 = new Quiz(
   "a",
   codingQuestion9,
 
-  false
+  false,
+  8
 );
 
 const codingQuestion7 = new Quiz(
@@ -56,7 +62,8 @@ const codingQuestion7 = new Quiz(
   "d",
   codingQuestion8,
 
-  false
+  false,
+  7
 );
 
 const codingQuestion6 = new Quiz(
@@ -65,7 +72,8 @@ const codingQuestion6 = new Quiz(
   "c",
   codingQuestion7,
 
-  false
+  false,
+  6
 );
 
 const codingQuestion5 = new Quiz(
@@ -78,7 +86,8 @@ const codingQuestion5 = new Quiz(
   ],
   "c",
   codingQuestion6,
-  false
+  false,
+  5
 );
 
 const codingQuestion4 = new Quiz(
@@ -86,7 +95,8 @@ const codingQuestion4 = new Quiz(
   ["Jonas Torvalds", "Brendan Eich", "Steve Jobs", "James Gosling"],
   "b",
   codingQuestion5,
-  false
+  false,
+  4
 );
 
 const codingQuestion3 = new Quiz(
@@ -99,7 +109,8 @@ const codingQuestion3 = new Quiz(
   ],
   "a",
   codingQuestion4,
-  false
+  false,
+  3
 );
 
 const codingQuestion2 = new Quiz(
@@ -107,7 +118,8 @@ const codingQuestion2 = new Quiz(
   ["font-size", "font-weight", "font-family", "text-transform"],
   "c",
   codingQuestion3,
-  false
+  false,
+  2
 );
 
 const codingQuestion1 = new Quiz(
@@ -115,7 +127,8 @@ const codingQuestion1 = new Quiz(
   ["Tim Berners Lee", "Jonas Torvalds", "Imaran Khan", "Bill Gates"],
   "a",
   codingQuestion2,
-  false
+  false,
+  1
 );
 
 //? END OF CODING QUESTIONS
@@ -128,21 +141,24 @@ const geographyQuestion16 = new Quiz(
   ["Colombia", "Brazil", "Peru", "Argentina"],
   "b",
   "none",
-  true
+  true,
+  16
 );
 const geographyQuestion15 = new Quiz(
   "Which country is the largest in the world by surface area?",
   ["Russia", "China", "Canada", "USA"],
   "a",
   geographyQuestion16,
-  false
+  false,
+  15
 );
 const geographyQuestion14 = new Quiz(
   "What is the most widely spoken language of the world (by first language speakers)?",
   ["English", "Mandarin", "Spanish", "Hindi"],
   "b",
   geographyQuestion15,
-  false
+  false,
+  14
 );
 
 const geographyQuestion13 = new Quiz(
@@ -150,14 +166,16 @@ const geographyQuestion13 = new Quiz(
   ["193", "253", "153", "103"],
   "a",
   geographyQuestion14,
-  false
+  false,
+  13
 );
 const geographyQuestion12 = new Quiz(
   "What is Earth's second largest continent by surface size?",
   ["Europa", "North America", "Africa", "South America"],
   "c",
   geographyQuestion13,
-  false
+  false,
+  12
 );
 
 const geographyQuestion11 = new Quiz(
@@ -165,7 +183,8 @@ const geographyQuestion11 = new Quiz(
   ["Peru", "Colombia", "Argentina", "Brazil"],
   "d",
   geographyQuestion12,
-  false
+  false,
+  11
 );
 
 const geographyQuestion10 = new Quiz(
@@ -173,7 +192,8 @@ const geographyQuestion10 = new Quiz(
   ["China", "Kazakhstan", "Saudi Arabia", "India"],
   "a",
   geographyQuestion11,
-  false
+  false,
+  10
 );
 
 const geographyQuestion9 = new Quiz(
@@ -181,7 +201,8 @@ const geographyQuestion9 = new Quiz(
   ["Helsinki", "Reykjavik", "Ulaanbaatar", "Ottawa"],
   "b",
   geographyQuestion10,
-  false
+  false,
+  9
 );
 
 const geographyQuestion8 = new Quiz(
@@ -189,7 +210,8 @@ const geographyQuestion8 = new Quiz(
   ["Canada", "Russia", "Indonesia", "Australia"],
   "a",
   geographyQuestion9,
-  false
+  false,
+  8
 );
 
 const geographyQuestion7 = new Quiz(
@@ -197,7 +219,8 @@ const geographyQuestion7 = new Quiz(
   ["Africa", "North America", "Europe", "Asia"],
   "d",
   geographyQuestion8,
-  false
+  false,
+  7
 );
 
 const geographyQuestion6 = new Quiz(
@@ -205,7 +228,8 @@ const geographyQuestion6 = new Quiz(
   ["San Marino", "Malta", "Vatican", "Faroe Island"],
   "c",
   geographyQuestion7,
-  false
+  false,
+  6
 );
 
 const geographyQuestion5 = new Quiz(
@@ -213,7 +237,8 @@ const geographyQuestion5 = new Quiz(
   ["Amazon", "Padeira", "Chenab", "Cano Cristals"],
   "a",
   geographyQuestion6,
-  false
+  false,
+  5
 );
 
 const geographyQuestion4 = new Quiz(
@@ -221,7 +246,8 @@ const geographyQuestion4 = new Quiz(
   ["Europe", "Africa", "Asia", "Oceania"],
   "b",
   geographyQuestion5,
-  false
+  false,
+  4
 );
 
 const geographyQuestion3 = new Quiz(
@@ -229,7 +255,8 @@ const geographyQuestion3 = new Quiz(
   ["Kilimanjaro", "Mount Everest", "K2", "Matterhorn"],
   "b",
   geographyQuestion4,
-  false
+  false,
+  3
 );
 
 const geographyQuestion2 = new Quiz(
@@ -237,7 +264,8 @@ const geographyQuestion2 = new Quiz(
   ["Prishtina", "Mitrovica", "New York", "Peja"],
   "a",
   geographyQuestion3,
-  false
+  false,
+  2
 );
 
 const geographyQuestion1 = new Quiz(
@@ -245,7 +273,8 @@ const geographyQuestion1 = new Quiz(
   ["12", "6", "8", "7"],
   "d",
   geographyQuestion2,
-  false
+  false,
+  1
 );
 
 //! STARTING CODE FOR QUIZES
@@ -258,7 +287,7 @@ let nextPage;
 let userChosenAnswer;
 
 let clickedAnswer;
-
+let totalQuestions;
 //!
 
 //? Landing PAGE DOM
@@ -306,6 +335,9 @@ const createStartQuestion = function () {
         <h1>
           ${currentQuestion.question}
         </h1>
+        <h6 class="start__title--qnum">
+          ${currentQuestion.whichQuestion} / ${totalQuestions}
+        </h6>
         `),
     (document.querySelector(
       ".a"
@@ -362,15 +394,20 @@ buttons.addEventListener("click", function (e) {
 
 chooseQuiz.forEach(function (e) {
   e.addEventListener("click", function () {
-    nextPage.classList.add("title-escape");
+    // nextPage.classList.add("title-escape");
+    document.querySelector(".take__title").classList.add("left-btn-escape");
+    document.querySelector(".take__showcase").classList.add("right-btn-escape");
     const currentQuiz = e.getAttribute("data-set");
     if (currentQuiz === "codingQuestion1") {
+      totalQuestions = 10;
       addCurrentQuestion(codingQuestion1);
     } else if (currentQuiz === "geographyQuestion1") {
       addCurrentQuestion(geographyQuestion1);
       console.log("geographyQuestion1");
+      totalQuestions = 15;
     } else if (currentQuiz === "worldCupQuestion1") {
       console.log("worldCupQuestion1");
+      totalQuestions = 15;
     }
     setTimeout(function () {
       nextPage.style.display = "none";
@@ -388,7 +425,7 @@ chooseQuiz.forEach(function (e) {
     console.log(correctAnswer);
     console.log(nextQuestion);
 
-    return currentQuestion, correctAnswer, nextQuestion;
+    return currentQuestion, correctAnswer, nextQuestion, totalQuestions;
   });
 });
 
