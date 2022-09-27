@@ -118,7 +118,27 @@ const codingQuestion1 = new Quiz(
   false
 );
 
-//? end of coding questions
+//? END OF CODING QUESTIONS
+
+// ! ------------------------------
+
+//? START OF GEOGRAPHY QUESTIONS
+
+const geographyQuestion2 = new Quiz(
+  `"What's the population of Kosovo"?`,
+  ["2 Million", "1.5 Million", "3 Million", "1 Million"],
+  "a",
+  "none",
+  true
+);
+
+const geographyQuestion1 = new Quiz(
+  `How many continents are there?`,
+  ["12", "6", "8", "7"],
+  "d",
+  geographyQuestion2,
+  false
+);
 
 //! STARTING CODE FOR QUIZES
 
