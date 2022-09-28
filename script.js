@@ -17,7 +17,7 @@ const Quiz = function (
   this.whichQuestion = numberQuestion;
 };
 
-//? coding quiz
+// HARD CODED QUIZ MADE FROM ME - abit salihu
 
 const codingQuestion11 = new Quiz(
   "none",
@@ -67,11 +67,10 @@ const codingQuestion7 = new Quiz(
 );
 
 const codingQuestion6 = new Quiz(
-  "What property do we use to change font type?",
-  ["font-size", "font-weight", "font-family", "text-transform"],
-  "c",
+  "Who created this Quiz Website?👀",
+  ["github.com/abitsalihu", "Not me👀", "Not me👀", "Not me👀"],
+  "a",
   codingQuestion7,
-
   false,
   6
 );
@@ -277,6 +276,140 @@ const geographyQuestion1 = new Quiz(
   1
 );
 
+// !--------------------------------------------------------------------
+
+//? WORLD CUP QUIZ
+
+const worldCupQuestion14 = new Quiz(
+  "South America's all time record goalscorer",
+  ["Maradona", "Pele", "Lionel Messi", "Ronaldo(Brazil)"],
+  "d",
+  "none",
+  true,
+  14
+);
+
+const worldCupQuestion13 = new Quiz(
+  "First person to win the World Cup both as a player and coach?",
+  ["Fatih Terim", "Didier Deschamps", "Beckenbauer", "Mario Zagalio"],
+  "d",
+  worldCupQuestion14,
+  false,
+  13
+);
+
+const worldCupQuestion12 = new Quiz(
+  "What's the most goals a single player scored in a World Cup?",
+  ["10", "3", "13", "20"],
+  "c",
+  worldCupQuestion13,
+  false,
+  12
+);
+
+const worldCupQuestion11 = new Quiz(
+  "Who has played the most matches in the World Cup?",
+  ["Lothar Matthäus", "Lionel Messi", "Pele", "Didier Deschamps"],
+  "a",
+  worldCupQuestion12,
+  false,
+  11
+);
+
+const worldCupQuestion10 = new Quiz(
+  "How many finals did Cafu feature in the World Cup?",
+  ["5", "3", "2", "4"],
+  "b",
+  worldCupQuestion11,
+  false,
+  10
+);
+
+const worldCupQuestion9 = new Quiz(
+  "In 2010, which one of these teams was not in the semifinals?",
+  ["England", "Uruguay", "Netherlands", "Spain"],
+  "a",
+  worldCupQuestion10,
+  false,
+  9
+);
+
+const worldCupQuestion8 = new Quiz(
+  "What is the name of Diego Maradona’s infamous first goal against England in 1986?",
+  [
+    "It doesn't have a name.",
+    "Hand of God",
+    "Maradona Miracle",
+    "The Scorpion",
+  ],
+  "b",
+  worldCupQuestion9,
+  false,
+  8
+);
+
+const worldCupQuestion7 = new Quiz(
+  "Prior to the 2022 World Cup, which goalkeeper has the most saves in a single World Cup match?",
+  ["Lev Yashin", "Manuel Neuer", "Gianluigi Buffon", "Tim Howard"],
+  "d",
+  worldCupQuestion8,
+  false,
+  7
+);
+
+const worldCupQuestion6 = new Quiz(
+  "What year did the World Cup competition start?",
+  ["1925", "1890", "1930", "1950"],
+  "c",
+  worldCupQuestion7,
+  false,
+  6
+);
+
+const worldCupQuestion5 = new Quiz(
+  "Prior to the 2022 World Cup, which player is the all-time leading goal scorer in World Cup history?",
+  ["Miroslav Klose", "Pele", "Ronaldo(Brazil)", "Lionel Messi"],
+  "a",
+  worldCupQuestion6,
+  false,
+  5
+);
+
+const worldCupQuestion4 = new Quiz(
+  "Which country won the World Cup in 2018?",
+  ["South Korea", "Portugal", "Brazil", "France"],
+  "d",
+  worldCupQuestion5,
+  false,
+  4
+);
+
+const worldCupQuestion3 = new Quiz(
+  "How many national teams compete in the World Cup?",
+  ["32", "2", "30", "38"],
+  "a",
+  worldCupQuestion4,
+  false,
+  3
+);
+const worldCupQuestion2 = new Quiz(
+  "What’s the host country for the 2022 World Cup?",
+  ["Japan", "Qatar", "Mexico", "England"],
+  "b",
+  worldCupQuestion3,
+  false,
+  2
+);
+
+const worldCupQuestion1 = new Quiz(
+  "Which country has won the most World Cups?",
+  ["Brazil", "Germany", "Italy", "Argentina"],
+  "a",
+  worldCupQuestion2,
+  false,
+  1
+);
+
 //! STARTING CODE FOR QUIZES
 
 let currentQuestion;
@@ -285,6 +418,7 @@ let nextQuestion;
 let nextPage;
 
 let userChosenAnswer;
+let userChosenQuiz;
 
 let clickedAnswer;
 let totalQuestions;
@@ -405,16 +539,19 @@ chooseQuiz.forEach(function (e) {
     document.querySelector(".take__title").classList.add("left-btn-escape");
     document.querySelector(".take__showcase").classList.add("right-btn-escape");
     const currentQuiz = e.getAttribute("data-set");
+
     if (currentQuiz === "codingQuestion1") {
-      totalQuestions = 10;
       addCurrentQuestion(codingQuestion1);
+      userChosenQuiz = codingQuestion1;
+      totalQuestions = 10;
     } else if (currentQuiz === "geographyQuestion1") {
       addCurrentQuestion(geographyQuestion1);
-      console.log("geographyQuestion1");
+      userChosenQuiz = geographyQuestion1;
       totalQuestions = 15;
     } else if (currentQuiz === "worldCupQuestion1") {
-      console.log("worldCupQuestion1");
-      totalQuestions = 15;
+      addCurrentQuestion(worldCupQuestion1);
+      userChosenQuiz = worldCupQuestion1;
+      totalQuestions = 13;
     }
 
     createStartQuestion();
@@ -460,7 +597,13 @@ chooseQuiz.forEach(function (e) {
 
     //?
 
-    return currentQuestion, correctAnswer, nextQuestion, totalQuestions;
+    return (
+      currentQuestion,
+      correctAnswer,
+      nextQuestion,
+      totalQuestions,
+      userChosenQuiz
+    );
   });
 });
 
@@ -512,7 +655,7 @@ startBtns.forEach((e) => {
         e.style.display = "none";
         userChosenAnswer = "none";
         startBtns[0].style.display = "flex";
-        answersBtnCon.style.pointerEvents = "all";
+        answersBtnCon.style.pointerEvents = "auto";
         allAnswers.forEach((e) => {
           e.classList.remove("active");
         });
@@ -526,28 +669,46 @@ startBtns.forEach((e) => {
       body.classList.remove("correct-answer");
       body.classList.add("correct-answer");
       startBtns[1].style.display = "none";
+      startBtns[2].style.display = "none";
 
       answersBtnCon.style.display = "none";
       failBtns.style.display = "flex";
     }
 
+    /// ? THESE ARE GOOD -- JUST NEED REFACTORING
     if (e.classList.contains("start__try")) {
-      console.log("clicked");
+      addCurrentQuestion(userChosenQuiz);
+      createStartQuestion();
+      body.classList.remove("wrong-bg");
+      body.classList.add("start-quiz-bg");
+
+      startBtns[0].style.display = "flex";
+      answersBtnCon.style.pointerEvents = "auto";
+      allAnswers.forEach((e) => {
+        e.classList.remove("active");
+      });
+      document.querySelector(".start__title").style.color = "#393e46";
+      failBtns.style.display = "none";
+      clickedAnswer.classList.remove("wrong-answer");
     }
     if (e.classList.contains("start__home")) {
       startQuiz.style.display = "none";
       displayLanding("flex");
       body.classList.remove("wrong-bg");
+      body.classList.remove("correct-answer");
+      body.classList.remove("start-quiz-bg");
+      answersBtnCon.style.display = "grid";
+
       allAnswers.forEach((e) => {
         e.classList.remove("active");
       });
       failBtns.style.display = "none";
       clickedAnswer.classList.remove("wrong-answer");
 
-      userChosenAnswer = "none";
+      userChosenAnswer = 0;
       startBtns[0].style.display = "flex";
       answersBtnCon.style.pointerEvents = "auto";
-      document.querySelector(".start__title").style.color = "black";
+      document.querySelector(".start__title").style.color = "#393e46";
       loseGame.pause();
     }
   });

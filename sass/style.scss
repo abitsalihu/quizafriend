@@ -438,7 +438,7 @@ h6 {
 
 .takeQuiz {
   background-color: $yellow;
-  transition: background-color 1s ease;
+  transition: background-color 0.75s ease;
 }
 
 //! START QUIZ CSS
@@ -567,13 +567,13 @@ h6 {
 
 .start-quiz-bg {
   background-color: $white;
-  transition: all 1s ease;
+  transition: all 0.75s ease;
 }
 
 .active {
   background-color: #7fb77e;
   color: $white;
-  // transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 .wrong-bg {
   background-color: #f96666;
@@ -581,11 +581,12 @@ h6 {
 .correct-answer {
   background-color: #c6ffab;
   // color: black;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 .wrong-answer {
   background-color: #ff1e1e;
   color: $white;
+  transition: 0.5s ease;
 }
 //!  ANIMATIONS
 
