@@ -1,6 +1,7 @@
 "use strict";
 
-//? create a quiz function
+//? create a quiz OBJECT function
+
 const Quiz = function (
   question,
   [answerOne, answerTwo, answerThree, answerFour],
@@ -17,23 +18,17 @@ const Quiz = function (
   this.whichQuestion = numberQuestion;
 };
 
-// HARD CODED QUIZ MADE FROM ME - abit salihu
+// !--------------------------------------------------------------------
 
-const codingQuestion11 = new Quiz(
-  "none",
-  ["none", "none", "none", "none"],
-  "none",
-  "none",
-  true,
-  11
-);
+//! HARD CODED QUIZ MADE FROM ME - abit salihu
 
+//? CODING QUIZ
 const codingQuestion10 = new Quiz(
   "What property do we use to create a website responsive?",
   ["@animation", "@media", "@keyframes", "@break"],
   "b",
-  codingQuestion11,
-  false,
+  "none",
+  true,
   10
 );
 
@@ -130,25 +125,15 @@ const codingQuestion1 = new Quiz(
   1
 );
 
-//? END OF CODING QUESTIONS
+// !--------------------------------------------------------------------
 
-// ! ------------------------------
-
-//? START OF GEOGRAPHY QUESTIONS
-const geographyQuestion16 = new Quiz(
-  "Which country is the largest in South America by surface area?",
-  ["Colombia", "Brazil", "Peru", "Argentina"],
-  "b",
-  "none",
-  true,
-  16
-);
+//?  GEOGRAPHY QUIZ
 const geographyQuestion15 = new Quiz(
   "Which country is the largest in the world by surface area?",
   ["Russia", "China", "Canada", "USA"],
   "a",
-  geographyQuestion16,
-  false,
+  "none",
+  true,
   15
 );
 const geographyQuestion14 = new Quiz(
@@ -279,22 +264,12 @@ const geographyQuestion1 = new Quiz(
 // !--------------------------------------------------------------------
 
 //? WORLD CUP QUIZ
-
-const worldCupQuestion14 = new Quiz(
-  "South America's all time record goalscorer",
-  ["Maradona", "Pele", "Lionel Messi", "Ronaldo(Brazil)"],
-  "d",
-  "none",
-  true,
-  14
-);
-
 const worldCupQuestion13 = new Quiz(
   "First person to win the World Cup both as a player and coach?",
   ["Fatih Terim", "Didier Deschamps", "Beckenbauer", "Mario Zagalio"],
   "d",
-  worldCupQuestion14,
-  false,
+  "none",
+  true,
   13
 );
 
@@ -410,7 +385,7 @@ const worldCupQuestion1 = new Quiz(
   1
 );
 
-//! STARTING CODE FOR QUIZES
+//! STARTING CODE FOR QUIZES TO BE MANIPULATED
 
 let currentQuestion;
 let correctAnswer;
@@ -424,6 +399,10 @@ let clickedAnswer;
 let totalQuestions;
 //!
 
+// !--------------------------------------------------------------------
+
+//! DOM
+
 //? Landing PAGE DOM
 const body = document.querySelector("body");
 const title = document.querySelector(".title");
@@ -431,17 +410,15 @@ const buttons = document.querySelector(".buttons");
 const createQuizBTN = document.querySelector(".creating");
 const takeQuizBTN = document.querySelector(".taking");
 
-//? TAKE QUIZ
+//? TAKE A QUIZ SECTION DOM
 const chooseQuiz = document.querySelectorAll(".take-quiz-btn");
 
-//?  START DOM
+//?  START QUIZ SECTION DOM
 const startQuiz = document.querySelector(".start");
 const answersBtnCon = document.querySelector(".start__answers");
 const allAnswers = document.querySelectorAll(".start__answers--btn");
 const startBtns = document.querySelectorAll(".start__btn");
 const failBtns = document.querySelector(".start__fail");
-console.log(failBtns);
-console.log(allAnswers);
 
 //? Audio DOM
 const btnClick = new Audio("audio/button.wav");
@@ -450,6 +427,8 @@ const swoopIn = new Audio("audio/transition_up.wav");
 const loseGame = new Audio("audio/lose.wav");
 
 //? Take QUIZ DOM
+
+// !--------------------------------------------------------------------
 
 //! FUNCTIONS
 
@@ -476,16 +455,16 @@ const createStartQuestion = function () {
         `),
     (document.querySelector(
       ".a"
-    ).innerHTML = `<span>A: </span> ${currentQuestion.answers[0]}`),
+    ).innerHTML = `<span class="quiz-span">A: </span> ${currentQuestion.answers[0]}`),
     (document.querySelector(
       ".b"
-    ).innerHTML = `<span>B: </span> ${currentQuestion.answers[1]}`),
+    ).innerHTML = `<span class="quiz-span">B: </span> ${currentQuestion.answers[1]}`),
     (document.querySelector(
       ".c"
-    ).innerHTML = `<span>C: </span> ${currentQuestion.answers[2]}`),
+    ).innerHTML = `<span class="quiz-span">C: </span> ${currentQuestion.answers[2]}`),
     (document.querySelector(
       ".d"
-    ).innerHTML = `<span>D: </span> ${currentQuestion.answers[3]}`);
+    ).innerHTML = `<span class="quiz-span">D: </span> ${currentQuestion.answers[3]}`);
 };
 
 const addActive = function (clicked) {
@@ -495,15 +474,13 @@ const addActive = function (clicked) {
   clicked.classList.add("active");
 };
 
-//! event listeners
+//? EventListener Function when user chooses if he wants to create or take a quiz
 
-//? LANDIN PAGE BUTTONS
-
-buttons.addEventListener("click", function (e) {
+const lBTN = function (e) {
   if (e.target.classList.contains("buttons__btn")) {
     nextPage = e.target.getAttribute("data-page");
     const nextBackground = e.target.getAttribute("background");
-    console.log(nextPage);
+
     title.classList.add("title-escape");
     createQuizBTN.classList.add("right-btn-escape");
     takeQuizBTN.classList.add("left-btn-escape");
@@ -530,11 +507,11 @@ buttons.addEventListener("click", function (e) {
 
     return nextPage;
   }
-});
+};
 
-//? CHOOSE QUIZ BUTTONS
+//? EventListener function when user chooses quiz
 
-chooseQuiz.forEach(function (e) {
+const userChoosesQuiz = function (e) {
   e.addEventListener("click", function () {
     document.querySelector(".take__title").classList.add("left-btn-escape");
     document.querySelector(".take__showcase").classList.add("right-btn-escape");
@@ -605,22 +582,50 @@ chooseQuiz.forEach(function (e) {
       userChosenQuiz
     );
   });
-});
+};
 
-answersBtnCon.addEventListener("click", function (e) {
+//? EventListener function when user clicks on a answer
+const userClickAnswer = function (e) {
   if (e.target.classList.contains("start__answers")) return;
   userChosenAnswer = e.target.getAttribute("data-set");
   addActive(e.target);
   clickedAnswer = e.target;
   return userChosenAnswer;
+};
+
+//! -----------------------------------------------------------------------------
+
+//! EVENT LISTENERS
+
+//?
+
+buttons.addEventListener("click", function (e) {
+  lBTN(e);
+});
+
+//? LISTENS FOR USER TO CHOOSE A QUIZ TO TAKE
+
+chooseQuiz.forEach(function (e) {
+  userChoosesQuiz(e);
+});
+
+//?  LISTENS FOR USER TO CLICK ON A ANSWER
+
+answersBtnCon.addEventListener("click", function (e) {
+  userClickAnswer(e);
 });
 
 startBtns.forEach((e) => {
   e.addEventListener("click", () => {
-    console.log(e);
-    if (!currentQuestion.lastQuestion) {
-      if (e.classList.contains("start__submit")) {
-        if (userChosenAnswer === correctAnswer) {
+    if (e.classList.contains("start__submit")) {
+      if (userChosenAnswer === correctAnswer) {
+        //? CHECKS IF THE ANSWER CHOSEN BY THE USER IS THE SAME AS THE CORRECT ANSWER THAT OF THAT PARTICULAR QUESTION//
+
+        if (!currentQuestion.lastQuestion) {
+          //? CHECKS IF IT'S THE LAST QUESTION OF THAT QUIZ
+
+          //? THIS CODE RUNS IF IT'S NOT THE LAST QUESITON OF THE QUIZ
+
           body.classList.add("correct-answer");
           addCurrentQuestion(currentQuestion.nextQuestion);
           e.style.display = "none";
@@ -632,47 +637,54 @@ startBtns.forEach((e) => {
           </h1>
           `;
         } else {
-          body.classList.remove("start-quiz-bg");
-          body.classList.add("wrong-bg");
+          //? THIS CODE RUNS IF IT IS THE LAST QUESTION OF THE QUIZ
+
           document.querySelector(".start__title").innerHTML = `
-          <h1>
-            WRONG!
-          </h1>
-          `;
-          document.querySelector(".start__title").style.color = "#f5f5f5";
-          // addWrong(e.target);
-          e.style.display = "none";
+              <h1>
+                CONGRATULATIONS!!!
+              </h1>
+              `;
+          body.classList.add("correct-answer");
+          startBtns[1].style.display = "none";
+          startBtns[2].style.display = "none";
+          startBtns[0].style.display = "none";
+
+          answersBtnCon.style.display = "none";
           failBtns.style.display = "flex";
-          answersBtnCon.style.pointerEvents = "none";
-          document.querySelector(`.${correctAnswer}`).classList.add("active");
-          clickedAnswer.classList.add("wrong-answer");
-          loseGame.play();
         }
       }
-      if (e.classList.contains("start__next")) {
-        createStartQuestion();
-        body.classList.remove("correct-answer");
-        e.style.display = "none";
-        userChosenAnswer = "none";
-        startBtns[0].style.display = "flex";
-        answersBtnCon.style.pointerEvents = "auto";
-        allAnswers.forEach((e) => {
-          e.classList.remove("active");
-        });
-      }
-    } else {
-      document.querySelector(".start__title").innerHTML = `
+
+      //? THIS CODE RUNS IF THE ANSWER CHOOSEN BY THE USER IS NOT THE SAME AS THE CORRECT ANSWER FOR THAT PARTICULAR QUESTION
+      else {
+        body.classList.remove("start-quiz-bg");
+        body.classList.add("wrong-bg");
+        startBtns[2].style.display = "flex";
+        document.querySelector(".start__title").innerHTML = `
         <h1>
-          CONGRATULATIONS!!!
+          WRONG!
         </h1>
         `;
-      body.classList.remove("correct-answer");
-      body.classList.add("correct-answer");
-      startBtns[1].style.display = "none";
-      startBtns[2].style.display = "none";
+        document.querySelector(".start__title").style.color = "#f5f5f5";
+        e.style.display = "none";
+        failBtns.style.display = "flex";
+        answersBtnCon.style.pointerEvents = "none";
+        document.querySelector(`.${correctAnswer}`).classList.add("active");
+        clickedAnswer.classList.add("wrong-answer");
+        loseGame.play();
+      }
+    }
 
-      answersBtnCon.style.display = "none";
-      failBtns.style.display = "flex";
+    if (e.classList.contains("start__next")) {
+      //? THIS CODE RUNS AFTER THE CHOSEN ANSWER BY THE USER IS THE SAME AS THE CORRECT ANSWER FOR THAT PARTICULAR QUESTION
+      createStartQuestion();
+      body.classList.remove("correct-answer");
+      e.style.display = "none";
+      userChosenAnswer = "none";
+      startBtns[0].style.display = "flex";
+      answersBtnCon.style.pointerEvents = "auto";
+      allAnswers.forEach((e) => {
+        e.classList.remove("active");
+      });
     }
 
     /// ? THESE ARE GOOD -- JUST NEED REFACTORING

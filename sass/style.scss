@@ -588,6 +588,10 @@ h6 {
   color: $white;
   transition: 0.5s ease;
 }
+
+.quiz-span {
+  pointer-events: none;
+}
 //!  ANIMATIONS
 
 //? TITLE ANIMATION
