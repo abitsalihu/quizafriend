@@ -744,16 +744,26 @@ h6 {
 
 @media screen and (max-width: 500px) {
   .title {
-    border: 1px solid blue;
     font-size: 1.75rem;
     // margin-right: 5px;
 
     &__second {
-      border: 1px solid red;
       &--friend {
-        border: 1px solid red;
         margin-left: -77.5px;
       }
+    }
+  }
+
+  .start {
+    &__title {
+      font-size: 1.1rem;
+
+      justify-content: end;
+    }
+
+    &__answers {
+      grid-template-columns: 1fr;
+      gap: 40px;
     }
   }
 }
