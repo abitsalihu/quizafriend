@@ -524,7 +524,8 @@ h6 {
 
 @media screen and (max-width: 500px) {
   .title {
-    font-size: 1.75rem; }
+    font-size: 1.5rem;
+    width: 100%; }
     .title__second--friend {
       margin-left: -45.5px; }
   .start__title {
