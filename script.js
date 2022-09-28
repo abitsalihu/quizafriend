@@ -313,15 +313,16 @@ console.log(allAnswers);
 const btnClick = new Audio("audio/button.wav");
 const swooshAway = new Audio("audio/whoosh.wav");
 const swoopIn = new Audio("audio/transition_up.wav");
+const loseGame = new Audio("audio/lose.wav");
 
 //? Take QUIZ DOM
 
 //! FUNCTIONS
 
-const displayNone = function () {
-  title.style.display = "none";
-  createQuizBTN.style.display = "none";
-  takeQuizBTN.style.display = "none";
+const displayLanding = function (state) {
+  title.style.display = `${state}`;
+  createQuizBTN.style.display = `${state}`;
+  takeQuizBTN.style.display = `${state}`;
 };
 
 const addCurrentQuestion = function (data) {
@@ -372,7 +373,14 @@ buttons.addEventListener("click", function (e) {
     title.classList.add("title-escape");
     createQuizBTN.classList.add("right-btn-escape");
     takeQuizBTN.classList.add("left-btn-escape");
-    setTimeout(displayNone, 1500);
+    setTimeout(() => {
+      displayLanding("none");
+    }, 1500);
+    setTimeout(() => {
+      title.classList.remove("title-escape");
+      createQuizBTN.classList.remove("right-btn-escape");
+      takeQuizBTN.classList.remove("left-btn-escape");
+    }, 1700);
     body.classList.add(nextBackground);
     nextPage = document.querySelector(`.${nextPage}`);
     btnClick.play();
@@ -384,7 +392,7 @@ buttons.addEventListener("click", function (e) {
     }, 1500);
     setTimeout(function () {
       swoopIn.play();
-    }, 1200);
+    }, 1300);
 
     return nextPage;
   }
@@ -394,7 +402,6 @@ buttons.addEventListener("click", function (e) {
 
 chooseQuiz.forEach(function (e) {
   e.addEventListener("click", function () {
-    // nextPage.classList.add("title-escape");
     document.querySelector(".take__title").classList.add("left-btn-escape");
     document.querySelector(".take__showcase").classList.add("right-btn-escape");
     const currentQuiz = e.getAttribute("data-set");
@@ -409,21 +416,49 @@ chooseQuiz.forEach(function (e) {
       console.log("worldCupQuestion1");
       totalQuestions = 15;
     }
-    setTimeout(function () {
+
+    createStartQuestion();
+
+    //! TIMEOUTS
+    setTimeout(() => {
       nextPage.style.display = "none";
     }, 1500);
-    setTimeout(function () {
+    setTimeout(() => {
       body.classList.add("start-quiz-bg");
     }, 1000);
 
-    setTimeout(function () {
+    setTimeout(() => {
       startQuiz.style.display = "flex";
     }, 1500);
 
-    createStartQuestion();
-    console.log(currentQuestion);
-    console.log(correctAnswer);
-    console.log(nextQuestion);
+    setTimeout(() => {
+      body.classList.remove("takeQuiz");
+    }, 1900);
+
+    setTimeout(() => {
+      document
+        .querySelector(".take__title")
+        .classList.remove("left-btn-escape");
+    }, 1900);
+
+    setTimeout(() => {
+      document
+        .querySelector(".take__showcase")
+        .classList.remove("right-btn-escape");
+    }, 1900);
+    //? AUDIO
+    setTimeout(() => {
+      btnClick.play();
+    }, 0);
+    setTimeout(() => {
+      swooshAway.play();
+    }, 175);
+
+    setTimeout(() => {
+      swoopIn.play();
+    }, 1200);
+
+    //?
 
     return currentQuestion, correctAnswer, nextQuestion, totalQuestions;
   });
@@ -445,10 +480,6 @@ startBtns.forEach((e) => {
         if (userChosenAnswer === correctAnswer) {
           body.classList.add("correct-answer");
           addCurrentQuestion(currentQuestion.nextQuestion);
-          console.log(currentQuestion);
-          console.log(correctAnswer);
-          console.log(nextQuestion);
-          console.log(userChosenAnswer);
           e.style.display = "none";
           startBtns[1].style.display = "flex";
           answersBtnCon.style.pointerEvents = "none";
@@ -458,6 +489,7 @@ startBtns.forEach((e) => {
           </h1>
           `;
         } else {
+          body.classList.remove("start-quiz-bg");
           body.classList.add("wrong-bg");
           document.querySelector(".start__title").innerHTML = `
           <h1>
@@ -471,6 +503,7 @@ startBtns.forEach((e) => {
           answersBtnCon.style.pointerEvents = "none";
           document.querySelector(`.${correctAnswer}`).classList.add("active");
           clickedAnswer.classList.add("wrong-answer");
+          loseGame.play();
         }
       }
       if (e.classList.contains("start__next")) {
@@ -499,6 +532,23 @@ startBtns.forEach((e) => {
     }
 
     if (e.classList.contains("start__try")) {
+      console.log("clicked");
+    }
+    if (e.classList.contains("start__home")) {
+      startQuiz.style.display = "none";
+      displayLanding("flex");
+      body.classList.remove("wrong-bg");
+      allAnswers.forEach((e) => {
+        e.classList.remove("active");
+      });
+      failBtns.style.display = "none";
+      clickedAnswer.classList.remove("wrong-answer");
+
+      userChosenAnswer = "none";
+      startBtns[0].style.display = "flex";
+      answersBtnCon.style.pointerEvents = "auto";
+      document.querySelector(".start__title").style.color = "black";
+      loseGame.pause();
     }
   });
 });
