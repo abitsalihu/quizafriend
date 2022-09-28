@@ -20,5 +20,3 @@
 node_modules
 
 # avoid sass to css changes
-css
-style.css
