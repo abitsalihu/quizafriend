@@ -322,8 +322,7 @@ h6 {
   align-items: center;
   gap: 75px;
   color: #393e46;
-  display: none;
-  border: 1px solid blue; }
+  display: none; }
   .start__title {
     font-size: 1.4rem;
     text-align: center;
