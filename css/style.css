@@ -75,7 +75,7 @@ h6 {
     .title__second--self {
       animation: displaySelf 8s ease infinite;
       position: relative;
-      margin-left: -1.5spx; }
+      margin-left: -1.5px; }
     .title__second--friend {
       margin-left: -77.5px;
       animation: displayFriend 8s ease infinite;
@@ -323,23 +323,29 @@ h6 {
   align-items: center;
   gap: 100px;
   color: #393e46;
-  display: none; }
+  display: none;
+  border: 1px solid red; }
   .start__title {
     font-size: 1.4rem;
     text-align: center;
     max-width: 900px;
-    height: 20%;
+    border: 1px solid blue;
+    height: 25%;
     display: flex;
     flex-direction: column;
     justify-content: center; }
     .start__title--qnum {
+      color: #797979;
+      font-size: 1.3rem;
       margin-top: 5px;
       font-weight: 400; }
   .start__answers {
+    border: 1px solid blue;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 100px; }
     .start__answers--btn {
+      border: 1px solid blue;
       border: none;
       width: 300px;
       box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
@@ -527,10 +533,50 @@ h6 {
     font-size: 1.5rem;
     width: 100%; }
     .title__second--friend {
-      margin-left: -45.5px; }
+      margin-left: -50px; }
+  .take__title {
+    font-size: 1.75rem; }
   .start__title {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    padding: 0px 20px;
     justify-content: end; }
+    .start__title--qnum {
+      margin-top: 5px;
+      font-size: 1.3rem;
+      font-weight: 400; }
   .start__answers {
     grid-template-columns: 1fr;
-    gap: 40px; } }
+    gap: 40px; }
+    .start__answers--btn {
+      width: 250px;
+      font-size: 1.55rem;
+      padding: 20px 20px; }
+  .start__fail {
+    justify-content: center;
+    gap: 20px; }
+  .start__try {
+    width: 150px;
+    font-size: 1.4rem; }
+  .start__home {
+    width: 150px;
+    font-size: 1.4rem; }
+  @keyframes animate {
+    0% {
+      width: 0px;
+      background-color: #facb70; }
+    2% { }
+    25% {
+      width: 130px; }
+    43% {
+      background-color: #facb70; }
+    50% {
+      width: 0px;
+      background-color: #7fb77e; }
+    75% {
+      width: 187.5px; }
+    78% {
+      width: 187.5px; }
+    93% {
+      background-color: #7fb77e; }
+    100% {
+      width: 0px; } } }

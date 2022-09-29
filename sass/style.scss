@@ -102,7 +102,7 @@ h6 {
     &--self {
       animation: displaySelf 8s ease infinite;
       position: relative;
-      margin-left: -1.5spx;
+      margin-left: -1.5px;
     }
     &--friend {
       margin-left: -77.5px;
@@ -453,26 +453,27 @@ h6 {
   gap: 100px;
   color: $black;
   display: none;
-  // border: 1px solid red;
+  border: 1px solid red;
 
   &__title {
     font-size: 1.4rem;
     text-align: center;
     max-width: 900px;
-    // border: 1px solid blue;
-    height: 20%;
+    border: 1px solid blue;
+    height: 25%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     &--qnum {
+      color: #797979;
+      font-size: 1.3rem;
       margin-top: 5px;
-      // color: #77787b;
       font-weight: 400;
     }
   }
   &__answers {
-    // border: 1px solid blue;
+    border: 1px solid blue;
     // border: 1px solid red;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -480,7 +481,7 @@ h6 {
     // border: 1px solid red;
 
     &--btn {
-      // border: 1px solid blue;
+      border: 1px solid blue;
       border: none;
       width: 300px;
       box-shadow: $start-btn-shadow;
@@ -746,25 +747,92 @@ h6 {
   .title {
     font-size: 1.5rem;
     width: 100%;
-    // margin-right: 5px;
 
     &__second {
       &--friend {
-        margin-left: -45.5px;
+        margin-left: -50px;
       }
     }
   }
 
+  .take {
+    &__title {
+      font-size: 1.75rem;
+    }
+  }
   .start {
     &__title {
-      font-size: 1.1rem;
-
+      font-size: 1rem;
+      padding: 0px 20px;
       justify-content: end;
+
+      &--qnum {
+        margin-top: 5px;
+        // color: #ffffff;
+
+        font-size: 1.3rem;
+
+        font-weight: 400;
+      }
     }
 
     &__answers {
       grid-template-columns: 1fr;
       gap: 40px;
+
+      &--btn {
+        width: 250px;
+        font-size: 1.55rem;
+        padding: 20px 20px;
+      }
+    }
+
+    &__fail {
+      justify-content: center;
+      gap: 20px;
+      // font-size: 1.4rem;
+    }
+
+    &__try {
+      width: 150px;
+      font-size: 1.4rem;
+    }
+
+    &__home {
+      width: 150px;
+      font-size: 1.4rem;
+    }
+  }
+
+  @keyframes animate {
+    0% {
+      width: 0px;
+
+      background-color: $yellow;
+    }
+    2% {
+    }
+    25% {
+      width: 130px;
+    }
+    43% {
+      background-color: $yellow;
+    }
+    50% {
+      width: 0px;
+      background-color: $green;
+    }
+    75% {
+      width: 187.5px;
+    }
+    78% {
+      width: 187.5px;
+    }
+    93% {
+      background-color: $green;
+    }
+    100% {
+      width: 0px;
     }
   }
 }
