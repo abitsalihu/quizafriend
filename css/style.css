@@ -321,15 +321,14 @@ h6 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 100px;
+  gap: 75px;
   color: #393e46;
   display: none;
-  border: 1px solid red; }
+  margin-top: 195px; }
   .start__title {
     font-size: 1.4rem;
     text-align: center;
     max-width: 900px;
-    border: 1px solid blue;
     height: 25%;
     display: flex;
     flex-direction: column;
@@ -340,12 +339,10 @@ h6 {
       margin-top: 5px;
       font-weight: 400; }
   .start__answers {
-    border: 1px solid blue;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 100px; }
     .start__answers--btn {
-      border: 1px solid blue;
       border: none;
       width: 300px;
       box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
@@ -355,15 +352,17 @@ h6 {
       color: currentColor;
       cursor: pointer;
       border-radius: 5px;
-      transition: all 0.2s ease; }
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start; }
       .start__answers--btn:hover {
         transform: translateY(-2px); }
       .start__answers--btn:active {
         transform: translateY(2px);
         transition: all 0.2s ease; }
       .start__answers--btn > span {
-        margin-right: 5px;
-        font-weight: 700; }
+        pointer-events: none; }
   .start__btn {
     width: 350px;
     height: 75px;
@@ -392,8 +391,9 @@ h6 {
   .start__fail {
     display: flex;
     flex-wrap: wrap;
-    width: 500px;
+    max-width: 500px;
     display: flex;
+    gap: 50px;
     justify-content: space-around;
     display: none; }
   .start__try {
@@ -406,6 +406,9 @@ h6 {
     color: #ffffff;
     width: 200px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 4px 12px; }
+
+.answer {
+  justify-self: center; }
 
 .start-quiz-bg {
   background-color: #ffffff;
@@ -429,7 +432,8 @@ h6 {
   transition: 0.5s ease; }
 
 .quiz-span {
-  pointer-events: none; }
+  margin-right: 15px;
+  font-weight: 700; }
 
 @keyframes animate {
   0% {
@@ -528,6 +532,11 @@ h6 {
     transform: translateX(-1500px);
     display: none; } }
 
+@media screen and (max-width: 715px) {
+  .start__answers {
+    grid-template-columns: 1fr;
+    gap: 40px; } }
+
 @media screen and (max-width: 500px) {
   .title {
     font-size: 1.5rem;
@@ -536,30 +545,38 @@ h6 {
       margin-left: -50px; }
   .take__title {
     font-size: 1.75rem; }
-  .start__title {
-    font-size: 1rem;
-    padding: 0px 20px;
-    justify-content: end; }
-    .start__title--qnum {
-      margin-top: 5px;
-      font-size: 1.3rem;
-      font-weight: 400; }
-  .start__answers {
-    grid-template-columns: 1fr;
-    gap: 40px; }
-    .start__answers--btn {
-      width: 250px;
-      font-size: 1.55rem;
-      padding: 20px 20px; }
-  .start__fail {
-    justify-content: center;
-    gap: 20px; }
-  .start__try {
-    width: 150px;
-    font-size: 1.4rem; }
-  .start__home {
-    width: 150px;
-    font-size: 1.4rem; }
+  .start {
+    padding-bottom: 20px; }
+    .start__title {
+      font-size: 1rem;
+      padding: 0px 20px;
+      justify-content: end; }
+      .start__title--qnum {
+        margin-top: 5px;
+        font-size: 1.3rem;
+        font-weight: 400; }
+    .start__answers {
+      grid-template-columns: 1fr;
+      gap: 40px; }
+      .start__answers--btn {
+        width: 250px;
+        font-size: 1.55rem;
+        padding: 20px 20px; }
+    .start__btn {
+      width: 85%; }
+    .start__fail {
+      justify-content: center;
+      gap: 20px; }
+    .start__try {
+      width: 150px;
+      font-size: 1.4rem; }
+    .start__home {
+      width: 150px;
+      font-size: 1.4rem; }
+  .create {
+    margin-top: 195px; }
+    .create__hquestions--title {
+      font-size: 1.5rem; }
   @keyframes animate {
     0% {
       width: 0px;

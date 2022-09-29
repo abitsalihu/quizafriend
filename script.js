@@ -420,6 +420,12 @@ const allAnswers = document.querySelectorAll(".start__answers--btn");
 const startBtns = document.querySelectorAll(".start__btn");
 const failBtns = document.querySelector(".start__fail");
 
+//? CREATE A QUIZ DOM!
+const questionAmountCon = document.querySelector(".create__hquestions--btns ");
+const questionAmountBtn = document.querySelectorAll(".choose-btn");
+const createQuestionsBtn = document.querySelector(".create__btn");
+const userValue = document.querySelector(".user-value").value;
+
 //? Audio DOM
 const btnClick = new Audio("audio/button.wav");
 const swooshAway = new Audio("audio/whoosh.wav");
@@ -455,7 +461,7 @@ const createStartQuestion = function () {
         `),
     (document.querySelector(
       ".a"
-    ).innerHTML = `<span class="quiz-span">A: </span> ${currentQuestion.answers[0]}`),
+    ).innerHTML = `<span class="quiz-span">A: </span> <span class="answer"> ${currentQuestion.answers[0]} </span> `),
     (document.querySelector(
       ".b"
     ).innerHTML = `<span class="quiz-span">B: </span> ${currentQuestion.answers[1]}`),
@@ -467,11 +473,11 @@ const createStartQuestion = function () {
     ).innerHTML = `<span class="quiz-span">D: </span> ${currentQuestion.answers[3]}`);
 };
 
-const addActive = function (clicked) {
-  allAnswers.forEach(function (e) {
-    e.classList.remove("active");
+const addActive = function (button, clicked, clas) {
+  button.forEach(function (e) {
+    e.classList.remove(`${clas}`);
   });
-  clicked.classList.add("active");
+  clicked.classList.add(`${clas}`);
 };
 
 //? EventListener Function when user chooses if he wants to create or take a quiz
@@ -588,10 +594,22 @@ const userChoosesQuiz = function (e) {
 const userClickAnswer = function (e) {
   if (e.target.classList.contains("start__answers")) return;
   userChosenAnswer = e.target.getAttribute("data-set");
-  addActive(e.target);
+  addActive(allAnswers, e.target, "active");
   clickedAnswer = e.target;
+  console.log(userChosenAnswer, clickedAnswer);
   return userChosenAnswer;
 };
+
+function checkFilled() {
+  const input = document.querySelector(".user-value");
+  if (input.value) {
+    input.classList.add("correct-answer");
+  } else {
+    input.classList.remove("correct-answer");
+  }
+}
+
+checkFilled();
 
 //! -----------------------------------------------------------------------------
 
@@ -599,6 +617,7 @@ const userClickAnswer = function (e) {
 
 //?
 
+//! LANDING PAGE EVENT LISTENERS
 buttons.addEventListener("click", function (e) {
   lBTN(e);
 });
@@ -614,6 +633,33 @@ chooseQuiz.forEach(function (e) {
 answersBtnCon.addEventListener("click", function (e) {
   userClickAnswer(e);
 });
+
+//! CREATE QUIZ EVENT LISTENERS
+
+questionAmountCon.addEventListener("click", function (e) {
+  if (e.target.classList.contains("create__hquestions--btns")) return;
+  addActive(questionAmountBtn, e.target, "correct-answer");
+});
+
+questionAmountBtn.forEach((e) => {
+  e.addEventListener("click", function () {
+    document.querySelector(".user-value").value = 0;
+    document.querySelector(".user-value").classList.remove("correct-answer");
+  });
+});
+
+createQuestionsBtn.addEventListener("click", function () {
+  totalQuestions =
+    document.querySelector(".correct-answer").getAttribute("data-set") ??
+    Number(document.querySelector(".user-value").value);
+  ("user2");
+
+  totalQuestions = Number(totalQuestions);
+  console.log(totalQuestions);
+  return totalQuestions;
+});
+
+// ! START QUIZ EVENT LISTENERS
 
 startBtns.forEach((e) => {
   e.addEventListener("click", () => {
