@@ -440,6 +440,7 @@ const loseGame = new Audio("audio/lose.wav");
 
 const displayLanding = function (state) {
   title.style.display = `${state}`;
+  buttons.style.display = `${state}`;
   createQuizBTN.style.display = `${state}`;
   takeQuizBTN.style.display = `${state}`;
 };
@@ -461,7 +462,7 @@ const createStartQuestion = function () {
         `),
     (document.querySelector(
       ".a"
-    ).innerHTML = `<span class="quiz-span">A: </span> <span class="answer"> ${currentQuestion.answers[0]} </span> `),
+    ).innerHTML = `<span class="quiz-span">A: </span> ${currentQuestion.answers[0]}`),
     (document.querySelector(
       ".b"
     ).innerHTML = `<span class="quiz-span">B: </span> ${currentQuestion.answers[1]}`),

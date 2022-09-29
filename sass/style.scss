@@ -302,25 +302,19 @@ h6 {
   align-items: center;
   gap: 85px;
   display: none;
-  // border: 1px solid red;
+  padding: 30px 0px 80px 0px;
 
-  margin-top: 250px;
-  margin-bottom: 75px;
+  // margin-top: 250px;
+  // margin-bottom: 75px;
 
   &__title {
     font-size: 2.25rem;
     height: 15%;
-    // display: flex;
-    // align-items: flex-end;
-    // letter-spacing: 1.5px;
-    // border: 1px solid blue;
-    // margin-bottom: 100px;
   }
 
   &__showcase {
     width: 90%;
     height: 85%;
-    // border: 1px solid red;
     display: flex;
     justify-content: center;
     gap: 100px;
@@ -330,7 +324,6 @@ h6 {
       height: 375px;
       max-width: 275px;
       margin: 0px 30px;
-      // border: 1px solid blue;
       position: relative;
       align-self: center;
       box-shadow: $active-box-shadow;
@@ -453,9 +446,9 @@ h6 {
   gap: 75px;
   color: $black;
   display: none;
-  // border: 1px solid blue;
+  border: 1px solid blue;
 
-  margin-top: 195px;
+  // margin-top: 195px;
 
   &__title {
     font-size: 1.4rem;
@@ -511,7 +504,8 @@ h6 {
   }
   &__btn {
     width: 350px;
-    height: 75px;
+    padding: 20px 0px;
+    // height: 75px;
     color: $black;
     font-weight: 600;
     font-size: 1.8rem;
@@ -572,7 +566,7 @@ h6 {
 }
 
 .answer {
-  justify-self: center;
+  pointer-events: none;
 }
 .start-quiz-bg {
   background-color: $white;
@@ -781,9 +775,11 @@ h6 {
   .start {
     // padding-bottom: 100px;
     &__title {
+      height: 10%;
+      border: 1px solid;
       font-size: 1rem;
       padding: 0px 20px;
-      justify-content: end;
+      justify-content: center;
 
       &--qnum {
         margin-top: 5px;
@@ -806,7 +802,7 @@ h6 {
     }
     &__btn {
       width: 85%;
-      margin-bottom: 100px;
+      // margin-bottom: 100px;
     }
     &__fail {
       justify-content: center;
@@ -825,8 +821,6 @@ h6 {
     }
   }
   .create {
-    margin-top: 195px;
-
     &__hquestions {
       &--title {
         font-size: 1.5rem;
