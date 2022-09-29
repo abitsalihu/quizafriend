@@ -545,34 +545,33 @@ h6 {
       margin-left: -50px; }
   .take__title {
     font-size: 1.75rem; }
-  .start {
-    padding-bottom: 20px; }
-    .start__title {
-      font-size: 1rem;
-      padding: 0px 20px;
-      justify-content: end; }
-      .start__title--qnum {
-        margin-top: 5px;
-        font-size: 1.3rem;
-        font-weight: 400; }
-    .start__answers {
-      grid-template-columns: 1fr;
-      gap: 40px; }
-      .start__answers--btn {
-        width: 250px;
-        font-size: 1.55rem;
-        padding: 20px 20px; }
-    .start__btn {
-      width: 85%; }
-    .start__fail {
-      justify-content: center;
-      gap: 20px; }
-    .start__try {
-      width: 150px;
-      font-size: 1.4rem; }
-    .start__home {
-      width: 150px;
-      font-size: 1.4rem; }
+  .start__title {
+    font-size: 1rem;
+    padding: 0px 20px;
+    justify-content: end; }
+    .start__title--qnum {
+      margin-top: 5px;
+      font-size: 1.3rem;
+      font-weight: 400; }
+  .start__answers {
+    grid-template-columns: 1fr;
+    gap: 40px; }
+    .start__answers--btn {
+      width: 250px;
+      font-size: 1.55rem;
+      padding: 20px 20px; }
+  .start__btn {
+    width: 85%;
+    margin-bottom: 100px; }
+  .start__fail {
+    justify-content: center;
+    gap: 20px; }
+  .start__try {
+    width: 150px;
+    font-size: 1.4rem; }
+  .start__home {
+    width: 150px;
+    font-size: 1.4rem; }
   .create {
     margin-top: 195px; }
     .create__hquestions--title {
