@@ -546,19 +546,18 @@ h6 {
 }
 
 .write {
-  border: 1px solid red;
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 50px;
 
   &__title {
     font-size: 2.25rem;
   }
   &__question {
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -579,7 +578,6 @@ h6 {
     }
 
     &--input {
-      border: 1px solid red;
       font-size: 1.3rem;
       padding: 0px 15px;
       outline-style: none;
@@ -587,11 +585,11 @@ h6 {
       border: none;
       width: 62rem;
       height: 5rem;
+      box-shadow: $start-btn-shadow;
     }
   }
 
   &__answers {
-    border: 1px solid blue;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -601,7 +599,6 @@ h6 {
     }
 
     &--con {
-      border: 1px solid red;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
@@ -614,7 +611,6 @@ h6 {
         font-size: 1.25rem;
         padding: 20px 15px;
 
-        cursor: pointer;
         border-radius: 5px;
         transition: all 0.2s ease;
         display: flex;
@@ -624,11 +620,79 @@ h6 {
         &::placeholder {
           display: flex;
           justify-content: center;
-          color: black;
-          font-weight: 500;
+          color: rgb(110, 109, 109);
+          font-weight: 400;
           font-size: 1.5rem;
         }
       }
+    }
+  }
+  &__correct {
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    width: 62rem;
+    gap: 10px;
+
+    &-title {
+      // border: 1px solid blue;
+
+      & > h3 {
+        font-size: 2.3rem;
+      }
+    }
+    &-answers {
+      // border: 1px solid red;
+      display: flex;
+      justify-content: space-between;
+
+      &--btn {
+        // border: 1px solid red;
+        border: none;
+        outline: none;
+        background: $white;
+        // border-radius: 999px;
+        border-radius: 5px;
+        font-size: 1.75rem;
+        padding: 12.5px 20px;
+        box-shadow: $start-btn-shadow;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          box-shadow: $hover-box-shadow;
+
+          transform: translateY(-1.5px);
+        }
+        &:active {
+          transform: translateY(2px);
+        }
+      }
+    }
+  }
+  &__submit {
+    width: 17.5rem;
+    height: 65px;
+    color: #393e46;
+    font-weight: 600;
+    background-color: $green-light;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    cursor: pointer;
+    border-style: none;
+    box-shadow: $active-box-shadow;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      box-shadow: $hover-box-shadow;
+      transform: translateY(-3px);
+    }
+
+    &:active {
+      box-shadow: $active-box-shadow;
+      transform: translateY(1px);
     }
   }
 }
