@@ -385,6 +385,200 @@ const worldCupQuestion1 = new Quiz(
   1
 );
 
+//! USER CREATING QUESTIONS
+
+const userCreatedQuestion22 = new Quiz("", [], "", "", false, 22);
+const userCreatedQuestion21 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion22,
+  false,
+  21
+);
+const userCreatedQuestion20 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion21,
+  false,
+  20
+);
+const userCreatedQuestion19 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion20,
+  false,
+  19
+);
+const userCreatedQuestion18 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion19,
+  false,
+  18
+);
+const userCreatedQuestion17 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion18,
+  false,
+  17
+);
+const userCreatedQuestion16 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion17,
+  false,
+  16
+);
+const userCreatedQuestion15 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion16,
+  false,
+  15
+);
+const userCreatedQuestion14 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion15,
+  false,
+  14
+);
+const userCreatedQuestion13 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion14,
+  false,
+  13
+);
+const userCreatedQuestion12 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion13,
+  false,
+  12
+);
+const userCreatedQuestion11 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion12,
+  false,
+  11
+);
+const userCreatedQuestion10 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion11,
+  false,
+  10
+);
+const userCreatedQuestion9 = new Quiz(
+  "s",
+  ["s", "n", "d", "s"],
+  "s",
+  userCreatedQuestion10,
+  false,
+  9
+);
+const userCreatedQuestion8 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion9,
+  false,
+  8
+);
+const userCreatedQuestion7 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion8,
+  false,
+  7
+);
+const userCreatedQuestion6 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion7,
+  false,
+  6
+);
+const userCreatedQuestion5 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion6,
+  false,
+  5
+);
+const userCreatedQuestion4 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion5,
+  false,
+  4
+);
+const userCreatedQuestion3 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion4,
+  false,
+  3
+);
+const userCreatedQuestion2 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion3,
+  false,
+  2
+);
+const userCreatedQuestion1 = new Quiz(
+  "abiti",
+  [],
+  "bibe",
+  userCreatedQuestion2,
+  false,
+  1
+);
+
+const userCreatedQuestionCon = [
+  userCreatedQuestion1,
+  userCreatedQuestion2,
+  userCreatedQuestion3,
+  userCreatedQuestion4,
+  userCreatedQuestion5,
+  userCreatedQuestion6,
+  userCreatedQuestion7,
+  userCreatedQuestion8,
+  userCreatedQuestion9,
+  userCreatedQuestion10,
+  userCreatedQuestion11,
+  userCreatedQuestion12,
+  userCreatedQuestion13,
+  userCreatedQuestion14,
+  userCreatedQuestion15,
+  userCreatedQuestion16,
+  userCreatedQuestion17,
+  userCreatedQuestion18,
+  userCreatedQuestion19,
+  userCreatedQuestion20,
+];
 //! STARTING CODE FOR QUIZES TO BE MANIPULATED
 
 let currentQuestion;
@@ -398,6 +592,8 @@ let userChosenQuiz;
 let clickedAnswer;
 let totalQuestions;
 //!
+
+//! STARTING CODE FOR USER CREATING QUIZ
 
 // !--------------------------------------------------------------------
 
@@ -425,15 +621,13 @@ const questionAmountCon = document.querySelector(".create__hquestions--btns ");
 const questionAmountBtn = document.querySelectorAll(".choose-btn");
 const createQuestionsBtn = document.querySelector(".create__btn");
 const userValue = document.querySelector(".user-value").value;
+const writeQuesition = document.querySelector(".write");
 
 //? Audio DOM
 const btnClick = new Audio("audio/button.wav");
 const swooshAway = new Audio("audio/whoosh.wav");
 const swoopIn = new Audio("audio/transition_up.wav");
 const loseGame = new Audio("audio/lose.wav");
-
-//? Take QUIZ DOM
-
 // !--------------------------------------------------------------------
 
 //! FUNCTIONS
@@ -635,6 +829,8 @@ answersBtnCon.addEventListener("click", function (e) {
   userClickAnswer(e);
 });
 
+//! ===============================================================
+
 //! CREATE QUIZ EVENT LISTENERS
 
 questionAmountCon.addEventListener("click", function (e) {
@@ -654,10 +850,15 @@ createQuestionsBtn.addEventListener("click", function () {
     document.querySelector(".correct-answer").getAttribute("data-set") ??
     Number(document.querySelector(".user-value").value);
   ("user2");
-
+  currentQuestion = userCreatedQuestion1;
   totalQuestions = Number(totalQuestions);
-  console.log(totalQuestions);
-  return totalQuestions;
+  let lastUserCreatedQuestion = userCreatedQuestionCon[`${totalQuestions - 1}`];
+  lastUserCreatedQuestion.lastQuestion = true;
+  document.querySelector(
+    ".current-question"
+  ).textContent = `1/${totalQuestions}`;
+  document.querySelector(".create").style.display = "none";
+  document.querySelector(".write").style.display = "flex";
 });
 
 // ! START QUIZ EVENT LISTENERS

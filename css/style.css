@@ -18,7 +18,6 @@ body {
   min-height: 100vh;
   overflow: none;
   background-color: #3f72af;
-  background-color: #7fb77e;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -60,8 +59,7 @@ h6 {
   height: 100px;
   width: 455px;
   font-size: 2.25rem;
-  position: relative;
-  display: none; }
+  position: relative; }
   .title__first {
     color: #ffffff;
     z-index: 999; }
@@ -88,7 +86,6 @@ h6 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  display: none;
   gap: 60px;
   margin-top: -20rem; }
   .buttons__btn {
@@ -415,7 +412,8 @@ h6 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 50px; }
+  gap: 50px;
+  display: none; }
   .write__title {
     font-size: 2.25rem; }
   .write__question {
@@ -476,9 +474,11 @@ h6 {
     .write__correct-title > h3 {
       font-size: 2.3rem; }
     .write__correct-answers {
-      display: flex;
-      justify-content: space-between; }
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px; }
       .write__correct-answers--btn {
+        justify-self: center;
         border: none;
         outline: none;
         background: #ffffff;
@@ -654,7 +654,6 @@ h6 {
     font-size: 1.75rem; }
   .start__title {
     height: 10%;
-    border: 1px solid;
     font-size: 1rem;
     padding: 0px 20px;
     justify-content: center; }

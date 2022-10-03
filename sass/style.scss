@@ -31,7 +31,6 @@ body {
   min-height: 100vh;
   overflow: none;
   background-color: $landing-bg;
-  background-color: $green;
 
   overflow-x: hidden;
   display: flex;
@@ -78,7 +77,6 @@ h6 {
   width: 455px;
   font-size: 2.25rem;
   position: relative;
-  display: none;
 
   &__first {
     color: $white;
@@ -114,7 +112,6 @@ h6 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  display: none;
 
   gap: 60px;
   margin-top: -20rem;
@@ -553,6 +550,7 @@ h6 {
   align-items: center;
   justify-content: center;
   gap: 50px;
+  display: none;
 
   &__title {
     font-size: 2.25rem;
@@ -642,16 +640,17 @@ h6 {
       }
     }
     &-answers {
-      // border: 1px solid red;
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
 
       &--btn {
-        // border: 1px solid red;
+        justify-self: center;
+
         border: none;
         outline: none;
         background: $white;
-        // border-radius: 999px;
+
         border-radius: 5px;
         font-size: 1.75rem;
         padding: 12.5px 20px;
@@ -905,7 +904,6 @@ h6 {
   .start {
     &__title {
       height: 10%;
-      border: 1px solid;
       font-size: 1rem;
       padding: 0px 20px;
       justify-content: center;
