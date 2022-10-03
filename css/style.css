@@ -18,6 +18,7 @@ body {
   min-height: 100vh;
   overflow: none;
   background-color: #3f72af;
+  background-color: #7fb77e;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -59,7 +60,8 @@ h6 {
   height: 100px;
   width: 455px;
   font-size: 2.25rem;
-  position: relative; }
+  position: relative;
+  display: none; }
   .title__first {
     color: #ffffff;
     z-index: 999; }
@@ -86,6 +88,7 @@ h6 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  display: none;
   gap: 60px;
   margin-top: -20rem; }
   .buttons__btn {
@@ -404,6 +407,71 @@ h6 {
     color: #ffffff;
     width: 200px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 4px 12px; }
+
+.write {
+  border: 1px solid red;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around; }
+  .write__title {
+    font-size: 2.25rem; }
+  .write__question {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; }
+    .write__question--title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .write__question--title > h3 {
+        font-size: 2rem; }
+      .write__question--title > h6 {
+        font-size: 1.3rem;
+        font-weight: 400; }
+    .write__question--input {
+      border: 1px solid red;
+      font-size: 1.3rem;
+      padding: 0px 15px;
+      outline-style: none;
+      border-radius: 5px;
+      border: none;
+      width: 62rem;
+      height: 5rem; }
+  .write__answers {
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; }
+    .write__answers > h3 {
+      font-size: 2rem; }
+    .write__answers--con {
+      border: 1px solid red;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px; }
+      .write__answers--con-btn {
+        border: none;
+        outline: none;
+        width: 300px;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
+        font-size: 1.25rem;
+        padding: 20px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; }
+        .write__answers--con-btn::placeholder {
+          display: flex;
+          justify-content: center;
+          color: black;
+          font-weight: 500;
+          font-size: 1.5rem; }
 
 .answer {
   pointer-events: none; }
