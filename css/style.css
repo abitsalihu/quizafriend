@@ -700,23 +700,7 @@ h6 {
       grid-template-columns: repeat(1, 1fr);
       gap: 20px; }
       .write__answers--con-btn {
-        border: none;
-        outline: none;
-        width: 300px;
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
-        font-size: 1.25rem;
-        padding: 20px 15px;
-        border-radius: 5px;
-        transition: all 0.2s ease;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start; }
-        .write__answers--con-btn::placeholder {
-          display: flex;
-          justify-content: center;
-          color: #6e6d6d;
-          font-weight: 400;
-          font-size: 1.5rem; }
+        width: 300px; }
   .write__correct {
     display: flex;
     flex-direction: column;
@@ -726,18 +710,7 @@ h6 {
     .write__correct-answers {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px; }
-      .write__correct-answers--btn {
-        justify-self: center;
-        border: none;
-        outline: none;
-        background: #ffffff;
-        border-radius: 5px;
-        font-size: 1.75rem;
-        padding: 12.5px 20px;
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
-        cursor: pointer;
-        transition: all 0.3s ease; } }
+      gap: 20px; } }
 
 @media screen and (max-width: 500px) {
   .title {

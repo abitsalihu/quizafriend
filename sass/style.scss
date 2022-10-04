@@ -958,26 +958,7 @@ h6 {
         gap: 20px;
 
         &-btn {
-          border: none;
-          outline: none;
           width: 300px;
-          box-shadow: $start-btn-shadow;
-          font-size: 1.25rem;
-          padding: 20px 15px;
-
-          border-radius: 5px;
-          transition: all 0.2s ease;
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-
-          &::placeholder {
-            display: flex;
-            justify-content: center;
-            color: rgb(110, 109, 109);
-            font-weight: 400;
-            font-size: 1.5rem;
-          }
         }
       }
     }
@@ -993,21 +974,6 @@ h6 {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-
-        &--btn {
-          justify-self: center;
-
-          border: none;
-          outline: none;
-          background: $white;
-
-          border-radius: 5px;
-          font-size: 1.75rem;
-          padding: 12.5px 20px;
-          box-shadow: $start-btn-shadow;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
       }
     }
   }
