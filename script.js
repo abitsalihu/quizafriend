@@ -386,8 +386,232 @@ const worldCupQuestion1 = new Quiz(
 );
 
 //! USER CREATING QUESTIONS
+const userCreatedQuestion50 = new Quiz("", [], "", "", false, 50);
+const userCreatedQuestion49 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion50,
+  false,
+  49
+);
+const userCreatedQuestion48 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion49,
+  false,
+  48
+);
+const userCreatedQuestion47 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion48,
+  false,
+  47
+);
+const userCreatedQuestion46 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion47,
+  false,
+  46
+);
+const userCreatedQuestion45 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion46,
+  false,
+  45
+);
+const userCreatedQuestion44 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion45,
+  false,
+  44
+);
+const userCreatedQuestion43 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion44,
+  false,
+  43
+);
+const userCreatedQuestion42 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion43,
+  false,
+  42
+);
+const userCreatedQuestion41 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion42,
+  false,
+  41
+);
+const userCreatedQuestion40 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion41,
+  false,
+  40
+);
+const userCreatedQuestion39 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion40,
+  false,
+  39
+);
+const userCreatedQuestion38 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion39,
+  false,
+  38
+);
+const userCreatedQuestion37 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion38,
+  false,
+  37
+);
+const userCreatedQuestion36 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion37,
+  false,
+  36
+);
+const userCreatedQuestion35 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion36,
+  false,
+  35
+);
+const userCreatedQuestion34 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion35,
+  false,
+  34
+);
+const userCreatedQuestion33 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion34,
+  false,
+  33
+);
+const userCreatedQuestion32 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion33,
+  false,
+  32
+);
+const userCreatedQuestion31 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion32,
+  false,
+  31
+);
+const userCreatedQuestion30 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion31,
+  false,
+  30
+);
+const userCreatedQuestion29 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion30,
+  false,
+  29
+);
+const userCreatedQuestion28 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion29,
+  false,
+  28
+);
+const userCreatedQuestion27 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion28,
+  false,
+  27
+);
+const userCreatedQuestion26 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion27,
+  false,
+  26
+);
+const userCreatedQuestion25 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion26,
+  false,
+  25
+);
+const userCreatedQuestion24 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion25,
+  false,
+  24
+);
+const userCreatedQuestion23 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion24,
+  false,
+  23
+);
 
-const userCreatedQuestion22 = new Quiz("", [], "", "", false, 22);
+const userCreatedQuestion22 = new Quiz(
+  "",
+  [],
+  "",
+  userCreatedQuestion23,
+  false,
+  22
+);
 const userCreatedQuestion21 = new Quiz(
   "",
   [],
@@ -578,7 +802,41 @@ const userCreatedQuestionCon = [
   userCreatedQuestion18,
   userCreatedQuestion19,
   userCreatedQuestion20,
+  userCreatedQuestion21,
+  userCreatedQuestion22,
+  userCreatedQuestion23,
+  userCreatedQuestion24,
+  userCreatedQuestion25,
+  userCreatedQuestion26,
+  userCreatedQuestion27,
+  userCreatedQuestion28,
+  userCreatedQuestion29,
+  userCreatedQuestion30,
+  userCreatedQuestion31,
+  userCreatedQuestion32,
+  userCreatedQuestion33,
+  userCreatedQuestion34,
+  userCreatedQuestion35,
+  userCreatedQuestion36,
+  userCreatedQuestion37,
+  userCreatedQuestion38,
+  userCreatedQuestion39,
+  userCreatedQuestion40,
+  userCreatedQuestion41,
+  userCreatedQuestion42,
+  userCreatedQuestion43,
+  userCreatedQuestion44,
+  userCreatedQuestion45,
+  userCreatedQuestion46,
+  userCreatedQuestion47,
+  userCreatedQuestion48,
+  userCreatedQuestion49,
+  userCreatedQuestion50,
 ];
+
+//? --------------------------------------------------------------------
+
+//? ACTUAL LOGIC JAAVSRIPT STARTS HERE!
 //! STARTING CODE FOR QUIZES TO BE MANIPULATED
 
 let currentQuestion;
@@ -591,7 +849,7 @@ let userChosenQuiz;
 
 let clickedAnswer;
 let totalQuestions;
-
+let lastUserCreatedQuestion;
 let userCorrectAnswer;
 //!
 
@@ -823,7 +1081,7 @@ checkFilled();
 
 //! EVENT LISTENERS
 
-//?
+//? ===============================================================
 
 //! LANDING PAGE EVENT LISTENERS
 buttons.addEventListener("click", function (e) {
@@ -842,7 +1100,7 @@ answersBtnCon.addEventListener("click", function (e) {
   userClickAnswer(e);
 });
 
-//! ===============================================================
+//? ===============================================================
 
 //! CREATE QUIZ EVENT LISTENERS
 
@@ -865,13 +1123,18 @@ createQuestionsBtn.addEventListener("click", function () {
   ("user2");
   currentQuestion = userCreatedQuestion1;
   totalQuestions = Number(totalQuestions);
-  let lastUserCreatedQuestion = userCreatedQuestionCon[`${totalQuestions - 1}`];
+  lastUserCreatedQuestion = userCreatedQuestionCon[`${totalQuestions - 1}`];
   lastUserCreatedQuestion.lastQuestion = true;
   document.querySelector(
     ".current-question"
   ).textContent = `${currentQuestion.whichQuestion}/${totalQuestions}`;
   document.querySelector(".create").style.display = "none";
   document.querySelector(".write").style.display = "flex";
+  questionAmountBtn.forEach((e) => {
+    e.classList.remove("correct-answer");
+    document.querySelector(".user-value").value = "";
+    document.querySelector(".user-value").classList.remove("correct-answer");
+  });
 });
 
 userCreateCorrectAnswerCon.addEventListener("click", (e) => {
@@ -880,7 +1143,7 @@ userCreateCorrectAnswerCon.addEventListener("click", (e) => {
   // console.log(e.target);
   userCorrectAnswer = e.target.getAttribute("data-set");
 
-  return userCorrectAnswer;
+  return userCorrectAnswer, lastUserCreatedQuestion;
 });
 
 userSubmitQuestionBtn.addEventListener("click", () => {
@@ -918,16 +1181,24 @@ userSubmitQuestionBtn.addEventListener("click", () => {
 });
 
 userCreateQuestionStartBtn.addEventListener("click", () => {
-  currentQuestion = userCreatedQuestion1;
+  addCurrentQuestion(userCreatedQuestion1);
+  userChosenQuiz = userCreatedQuestion1;
   document.querySelector(".write").style.display = "none";
   createStartQuestion();
   setTimeout(() => {
     body.classList.add("start-quiz-bg");
-  }, 1000);
+  }, 100);
   setTimeout(() => {
     startQuiz.style.display = "flex";
-  }, 1500);
+  }, 500);
+  document.querySelector(".write__question").style.display = "flex";
+  document.querySelector(".write__answers").style.display = "flex";
+  document.querySelector(".write__correct").style.display = "flex";
+  userSubmitQuestionBtn.style.display = "flex";
+  userCreateQuestionStartBtn.style.display = "none";
 });
+
+//? ===============================================================
 
 // ! START QUIZ EVENT LISTENERS
 
@@ -1020,8 +1291,10 @@ startBtns.forEach((e) => {
       clickedAnswer.classList.remove("wrong-answer");
     }
     if (e.classList.contains("start__home")) {
+      lastUserCreatedQuestion.lastQuestion = false;
       startQuiz.style.display = "none";
       displayLanding("flex");
+      body.classList.remove("createQuiz");
       body.classList.remove("wrong-bg");
       body.classList.remove("correct-answer");
       body.classList.remove("start-quiz-bg");
