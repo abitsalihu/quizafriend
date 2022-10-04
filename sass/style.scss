@@ -571,7 +571,7 @@ h6 {
       }
       & > h6 {
         font-size: 1.3rem;
-        font-weight: 400;
+        font-weight: 700;
       }
     }
 
@@ -683,6 +683,38 @@ h6 {
     box-shadow: $active-box-shadow;
     border-radius: 5px;
     transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      box-shadow: $hover-box-shadow;
+      transform: translateY(-3px);
+    }
+
+    &:active {
+      box-shadow: $active-box-shadow;
+      transform: translateY(1px);
+    }
+  }
+  &__start {
+    width: 17.5rem;
+    height: 65px;
+    color: #393e46;
+    font-weight: 600;
+    background-color: $green-light;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    cursor: pointer;
+    border-style: none;
+    box-shadow: $active-box-shadow;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
 
     &:hover {
       box-shadow: $hover-box-shadow;

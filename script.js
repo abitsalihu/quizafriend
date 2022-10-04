@@ -591,6 +591,8 @@ let userChosenQuiz;
 
 let clickedAnswer;
 let totalQuestions;
+
+let userCorrectAnswer;
 //!
 
 //! STARTING CODE FOR USER CREATING QUIZ
@@ -622,7 +624,18 @@ const questionAmountBtn = document.querySelectorAll(".choose-btn");
 const createQuestionsBtn = document.querySelector(".create__btn");
 const userValue = document.querySelector(".user-value").value;
 const writeQuesition = document.querySelector(".write");
+const userCreateCorrectAnswer = document.querySelectorAll(
+  ".write__correct-answers--btn"
+);
+const userCreateCorrectAnswerCon = document.querySelector(
+  ".write__correct-answers"
+);
+const userCreateQuestionAnswer = document.querySelectorAll(
+  ".write__answers--con-btn"
+);
+const userCreateQuestionStartBtn = document.querySelector(".write__start");
 
+const userSubmitQuestionBtn = document.querySelector(".write__submit");
 //? Audio DOM
 const btnClick = new Audio("audio/button.wav");
 const swooshAway = new Audio("audio/whoosh.wav");
@@ -856,9 +869,64 @@ createQuestionsBtn.addEventListener("click", function () {
   lastUserCreatedQuestion.lastQuestion = true;
   document.querySelector(
     ".current-question"
-  ).textContent = `1/${totalQuestions}`;
+  ).textContent = `${currentQuestion.whichQuestion}/${totalQuestions}`;
   document.querySelector(".create").style.display = "none";
   document.querySelector(".write").style.display = "flex";
+});
+
+userCreateCorrectAnswerCon.addEventListener("click", (e) => {
+  if (e.target.classList.contains("write__correct-answers")) return;
+  addActive(userCreateCorrectAnswer, e.target, "correct-answer");
+  // console.log(e.target);
+  userCorrectAnswer = e.target.getAttribute("data-set");
+
+  return userCorrectAnswer;
+});
+
+userSubmitQuestionBtn.addEventListener("click", () => {
+  // console.log("clicked");
+
+  currentQuestion.question = document.querySelector(
+    ".write__question--input"
+  ).value;
+  let userAnswers = [];
+  userAnswers.push(userCreateQuestionAnswer[0].value);
+  userAnswers.push(userCreateQuestionAnswer[1].value);
+  userAnswers.push(userCreateQuestionAnswer[2].value);
+  userAnswers.push(userCreateQuestionAnswer[3].value);
+
+  currentQuestion.correctAnswer = userCorrectAnswer;
+  currentQuestion.answers = userAnswers;
+  document.querySelector(".current-question").textContent = `${
+    currentQuestion.whichQuestion + 1
+  }/${totalQuestions}`;
+
+  document.querySelector(".write__question--input").value = "";
+  userCreateQuestionAnswer.forEach(function (e) {
+    e.value = "";
+  });
+  userCreateCorrectAnswer.forEach((e) => e.classList.remove("correct-answer"));
+  console.log(currentQuestion);
+  if (currentQuestion.lastQuestion) {
+    document.querySelector(".write__question").style.display = "none";
+    document.querySelector(".write__answers").style.display = "none";
+    document.querySelector(".write__correct").style.display = "none";
+    userSubmitQuestionBtn.style.display = "none";
+    userCreateQuestionStartBtn.style.display = "flex";
+  }
+  currentQuestion = currentQuestion.nextQuestion;
+});
+
+userCreateQuestionStartBtn.addEventListener("click", () => {
+  currentQuestion = userCreatedQuestion1;
+  document.querySelector(".write").style.display = "none";
+  createStartQuestion();
+  setTimeout(() => {
+    body.classList.add("start-quiz-bg");
+  }, 1000);
+  setTimeout(() => {
+    startQuiz.style.display = "flex";
+  }, 1500);
 });
 
 // ! START QUIZ EVENT LISTENERS
