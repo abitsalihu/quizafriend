@@ -626,6 +626,7 @@ h6 {
       }
     }
   }
+
   &__correct {
     // border: 1px solid red;
     display: flex;
@@ -1062,36 +1063,36 @@ h6 {
       }
     }
   }
-}
 
-@keyframes animate {
-  0% {
-    width: 0px;
+  @keyframes animate {
+    0% {
+      width: 0px;
 
-    background-color: $yellow;
-  }
-  2% {
-  }
-  25% {
-    width: 130px;
-  }
-  43% {
-    background-color: $yellow;
-  }
-  50% {
-    width: 0px;
-    background-color: $green;
-  }
-  75% {
-    width: 187.5px;
-  }
-  78% {
-    width: 187.5px;
-  }
-  93% {
-    background-color: $green;
-  }
-  100% {
-    width: 0px;
+      background-color: $yellow;
+    }
+    2% {
+    }
+    25% {
+      width: 130px;
+    }
+    43% {
+      background-color: $yellow;
+    }
+    50% {
+      width: 0px;
+      background-color: $green;
+    }
+    75% {
+      width: 187.5px;
+    }
+    78% {
+      width: 187.5px;
+    }
+    93% {
+      background-color: $green;
+    }
+    100% {
+      width: 0px;
+    }
   }
 }

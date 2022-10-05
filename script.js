@@ -34,7 +34,7 @@ const codingQuestion10 = new Quiz(
 
 const codingQuestion9 = new Quiz(
   "What tag do we use to create a link in HTML?",
-  ["a", "img", "href", "link"],
+  ["href", "img", "a", "link"],
   "c",
   codingQuestion10,
   false,
@@ -244,7 +244,7 @@ const geographyQuestion3 = new Quiz(
 );
 
 const geographyQuestion2 = new Quiz(
-  "What's the capital of Kosovo?",
+  "What is the capital of Kosovo?",
   ["Prishtina", "Mitrovica", "New York", "Peja"],
   "a",
   geographyQuestion3,
@@ -899,6 +899,7 @@ const btnClick = new Audio("audio/button.wav");
 const swooshAway = new Audio("audio/whoosh.wav");
 const swoopIn = new Audio("audio/transition_up.wav");
 const loseGame = new Audio("audio/lose.wav");
+const rickRolled = new Audio("audio/rick-rolled.wav");
 // !--------------------------------------------------------------------
 
 //! FUNCTIONS
@@ -1068,6 +1069,7 @@ const userClickAnswer = function (e) {
 
 function checkFilled() {
   const input = document.querySelector(".user-value");
+
   if (input.value) {
     input.classList.add("correct-answer");
   } else {
@@ -1098,6 +1100,7 @@ chooseQuiz.forEach(function (e) {
 
 answersBtnCon.addEventListener("click", function (e) {
   userClickAnswer(e);
+  btnClick.play();
 });
 
 //? ===============================================================
@@ -1107,11 +1110,12 @@ answersBtnCon.addEventListener("click", function (e) {
 questionAmountCon.addEventListener("click", function (e) {
   if (e.target.classList.contains("create__hquestions--btns")) return;
   addActive(questionAmountBtn, e.target, "correct-answer");
+  btnClick.play();
 });
 
 questionAmountBtn.forEach((e) => {
   e.addEventListener("click", function () {
-    document.querySelector(".user-value").value = 0;
+    document.querySelector(".user-value").value = "";
     document.querySelector(".user-value").classList.remove("correct-answer");
   });
 });
@@ -1127,7 +1131,7 @@ createQuestionsBtn.addEventListener("click", function () {
   lastUserCreatedQuestion.lastQuestion = true;
   document.querySelector(
     ".current-question"
-  ).textContent = `${currentQuestion.whichQuestion}/${totalQuestions}`;
+  ).innerHTML = `<span class="first__num-question">${currentQuestion.whichQuestion}</span>/${totalQuestions}`;
   document.querySelector(".create").style.display = "none";
   document.querySelector(".write").style.display = "flex";
   questionAmountBtn.forEach((e) => {
@@ -1135,6 +1139,7 @@ createQuestionsBtn.addEventListener("click", function () {
     document.querySelector(".user-value").value = "";
     document.querySelector(".user-value").classList.remove("correct-answer");
   });
+  btnClick.play();
 });
 
 userCreateCorrectAnswerCon.addEventListener("click", (e) => {
@@ -1142,6 +1147,7 @@ userCreateCorrectAnswerCon.addEventListener("click", (e) => {
   addActive(userCreateCorrectAnswer, e.target, "correct-answer");
   // console.log(e.target);
   userCorrectAnswer = e.target.getAttribute("data-set");
+  btnClick.play();
 
   return userCorrectAnswer, lastUserCreatedQuestion;
 });
@@ -1157,6 +1163,8 @@ userSubmitQuestionBtn.addEventListener("click", () => {
   userAnswers.push(userCreateQuestionAnswer[1].value);
   userAnswers.push(userCreateQuestionAnswer[2].value);
   userAnswers.push(userCreateQuestionAnswer[3].value);
+  console.log(!(userCreateCorrectAnswer[0] === true));
+  console.log(userAnswers === true);
 
   currentQuestion.correctAnswer = userCorrectAnswer;
   currentQuestion.answers = userAnswers;
@@ -1168,16 +1176,20 @@ userSubmitQuestionBtn.addEventListener("click", () => {
   userCreateQuestionAnswer.forEach(function (e) {
     e.value = "";
   });
+
   userCreateCorrectAnswer.forEach((e) => e.classList.remove("correct-answer"));
   console.log(currentQuestion);
   if (currentQuestion.lastQuestion) {
     document.querySelector(".write__question").style.display = "none";
     document.querySelector(".write__answers").style.display = "none";
     document.querySelector(".write__correct").style.display = "none";
+    document.querySelector(".write__title").style.display = "none";
+
     userSubmitQuestionBtn.style.display = "none";
     userCreateQuestionStartBtn.style.display = "flex";
   }
   currentQuestion = currentQuestion.nextQuestion;
+  btnClick.play();
 });
 
 userCreateQuestionStartBtn.addEventListener("click", () => {
@@ -1194,8 +1206,11 @@ userCreateQuestionStartBtn.addEventListener("click", () => {
   document.querySelector(".write__question").style.display = "flex";
   document.querySelector(".write__answers").style.display = "flex";
   document.querySelector(".write__correct").style.display = "flex";
+  document.querySelector(".write__title").style.display = "flex";
+
   userSubmitQuestionBtn.style.display = "flex";
   userCreateQuestionStartBtn.style.display = "none";
+  btnClick.play();
 });
 
 //? ===============================================================
@@ -1207,6 +1222,7 @@ startBtns.forEach((e) => {
     if (e.classList.contains("start__submit")) {
       if (userChosenAnswer === correctAnswer) {
         //? CHECKS IF THE ANSWER CHOSEN BY THE USER IS THE SAME AS THE CORRECT ANSWER THAT OF THAT PARTICULAR QUESTION//
+        btnClick.play();
 
         if (!currentQuestion.lastQuestion) {
           //? CHECKS IF IT'S THE LAST QUESTION OF THAT QUIZ
@@ -1231,6 +1247,7 @@ startBtns.forEach((e) => {
                 CONGRATULATIONS!!!
               </h1>
               `;
+
           body.classList.add("correct-answer");
           startBtns[1].style.display = "none";
           startBtns[2].style.display = "none";
@@ -1238,6 +1255,12 @@ startBtns.forEach((e) => {
 
           answersBtnCon.style.display = "none";
           failBtns.style.display = "flex";
+          const img = document.createElement("div");
+          img.classList.add("gif");
+          img.style.marginTop = "30px";
+          img.innerHTML = `<img src="https://media2.giphy.com/media/Ju7l5y9osyymQ/giphy.gif?cid=790b7611a1a961633e513956e2742091b42f312d0161206c&rid=giphy.gif&ct=g">`;
+          rickRolled.play();
+          document.querySelector(".start__title").appendChild(img);
         }
       }
 
@@ -1272,6 +1295,7 @@ startBtns.forEach((e) => {
       allAnswers.forEach((e) => {
         e.classList.remove("active");
       });
+      btnClick.play();
     }
 
     /// ? THESE ARE GOOD -- JUST NEED REFACTORING
@@ -1289,9 +1313,13 @@ startBtns.forEach((e) => {
       document.querySelector(".start__title").style.color = "#393e46";
       failBtns.style.display = "none";
       clickedAnswer.classList.remove("wrong-answer");
+      btnClick.play();
     }
     if (e.classList.contains("start__home")) {
-      lastUserCreatedQuestion.lastQuestion = false;
+      loseGame.pause();
+      rickRolled.pause();
+      btnClick.play();
+
       startQuiz.style.display = "none";
       displayLanding("flex");
       body.classList.remove("createQuiz");
@@ -1310,7 +1338,8 @@ startBtns.forEach((e) => {
       startBtns[0].style.display = "flex";
       answersBtnCon.style.pointerEvents = "auto";
       document.querySelector(".start__title").style.color = "#393e46";
-      loseGame.pause();
+
+      lastUserCreatedQuestion.lastQuestion = false;
     }
   });
 });

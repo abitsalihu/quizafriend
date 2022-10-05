@@ -753,25 +753,24 @@ h6 {
     padding: 0px 15px;
     max-width: 30rem; }
   .write__answers--con-btn {
-    width: 28rem; } }
-
-@keyframes animate {
-  0% {
-    width: 0px;
-    background-color: #facb70; }
-  2% { }
-  25% {
-    width: 130px; }
-  43% {
-    background-color: #facb70; }
-  50% {
-    width: 0px;
-    background-color: #7fb77e; }
-  75% {
-    width: 187.5px; }
-  78% {
-    width: 187.5px; }
-  93% {
-    background-color: #7fb77e; }
-  100% {
-    width: 0px; } }
+    width: 28rem; }
+  @keyframes animate {
+    0% {
+      width: 0px;
+      background-color: #facb70; }
+    2% { }
+    25% {
+      width: 130px; }
+    43% {
+      background-color: #facb70; }
+    50% {
+      width: 0px;
+      background-color: #7fb77e; }
+    75% {
+      width: 187.5px; }
+    78% {
+      width: 187.5px; }
+    93% {
+      background-color: #7fb77e; }
+    100% {
+      width: 0px; } } }
