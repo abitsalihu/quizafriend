@@ -585,6 +585,7 @@ h6 {
       width: 62rem;
       height: 5rem;
       box-shadow: $start-btn-shadow;
+      border: 1.5px solid transparent;
     }
   }
 
@@ -615,6 +616,7 @@ h6 {
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        border: 1.5px solid transparent;
 
         &::placeholder {
           display: flex;
@@ -659,6 +661,7 @@ h6 {
         box-shadow: $start-btn-shadow;
         cursor: pointer;
         transition: all 0.3s ease;
+        border: 1px solid transparent;
 
         &:hover {
           box-shadow: $hover-box-shadow;

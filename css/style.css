@@ -438,7 +438,8 @@ h6 {
       border: none;
       width: 62rem;
       height: 5rem;
-      box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px; }
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
+      border: 1.5px solid transparent; }
   .write__answers {
     display: flex;
     flex-direction: column;
@@ -460,7 +461,8 @@ h6 {
         transition: all 0.2s ease;
         display: flex;
         align-items: center;
-        justify-content: flex-start; }
+        justify-content: flex-start;
+        border: 1.5px solid transparent; }
         .write__answers--con-btn::placeholder {
           display: flex;
           justify-content: center;
@@ -488,7 +490,8 @@ h6 {
         padding: 12.5px 20px;
         box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
         cursor: pointer;
-        transition: all 0.3s ease; }
+        transition: all 0.3s ease;
+        border: 1px solid transparent; }
         .write__correct-answers--btn:hover {
           box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 15px;
           transform: translateY(-1.5px); }
