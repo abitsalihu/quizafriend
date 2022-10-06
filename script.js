@@ -1063,7 +1063,7 @@ const userClickAnswer = function (e) {
   userChosenAnswer = e.target.getAttribute("data-set");
   addActive(allAnswers, e.target, "active");
   clickedAnswer = e.target;
-  console.log(userChosenAnswer, clickedAnswer);
+
   return userChosenAnswer;
 };
 
@@ -1145,7 +1145,9 @@ createQuestionsBtn.addEventListener("click", function () {
 userCreateCorrectAnswerCon.addEventListener("click", (e) => {
   if (e.target.classList.contains("write__correct-answers")) return;
   addActive(userCreateCorrectAnswer, e.target, "correct-answer");
-  // console.log(e.target);
+  userCreateCorrectAnswer.forEach((e) => {
+    e.classList.remove("fill-question");
+  });
   userCorrectAnswer = e.target.getAttribute("data-set");
   btnClick.play();
 
@@ -1153,42 +1155,77 @@ userCreateCorrectAnswerCon.addEventListener("click", (e) => {
 });
 
 userSubmitQuestionBtn.addEventListener("click", () => {
-  // console.log("clicked");
-
   currentQuestion.question = document.querySelector(
     ".write__question--input"
   ).value;
-  let userAnswers = [];
-  userAnswers.push(userCreateQuestionAnswer[0].value);
-  userAnswers.push(userCreateQuestionAnswer[1].value);
-  userAnswers.push(userCreateQuestionAnswer[2].value);
-  userAnswers.push(userCreateQuestionAnswer[3].value);
-  console.log(!(userCreateCorrectAnswer[0] === true));
-  console.log(userAnswers === true);
 
-  currentQuestion.correctAnswer = userCorrectAnswer;
-  currentQuestion.answers = userAnswers;
-  document.querySelector(".current-question").textContent = `${
-    currentQuestion.whichQuestion + 1
-  }/${totalQuestions}`;
+  if (currentQuestion.question) {
+    document
+      .querySelector(".write__question--input")
+      .classList.remove("fill-question");
+    let userAnswers = [];
+    userAnswers.push(userCreateQuestionAnswer[0].value);
+    userAnswers.push(userCreateQuestionAnswer[1].value);
+    userAnswers.push(userCreateQuestionAnswer[2].value);
+    userAnswers.push(userCreateQuestionAnswer[3].value);
+    currentQuestion.answers = userAnswers;
 
-  document.querySelector(".write__question--input").value = "";
-  userCreateQuestionAnswer.forEach(function (e) {
-    e.value = "";
-  });
+    if (
+      currentQuestion.answers[0] &&
+      currentQuestion.answers[1] &&
+      currentQuestion.answers[2] &&
+      currentQuestion.answers[3]
+    ) {
+      userCreateQuestionAnswer.forEach((e) => {
+        e.classList.remove("fill-question");
+      });
 
-  userCreateCorrectAnswer.forEach((e) => e.classList.remove("correct-answer"));
-  console.log(currentQuestion);
-  if (currentQuestion.lastQuestion) {
-    document.querySelector(".write__question").style.display = "none";
-    document.querySelector(".write__answers").style.display = "none";
-    document.querySelector(".write__correct").style.display = "none";
-    document.querySelector(".write__title").style.display = "none";
+      currentQuestion.correctAnswer = userCorrectAnswer;
+      console.log(currentQuestion.correctAnswer);
+      if (currentQuestion.correctAnswer) {
+        console.log(currentQuestion.correctAnswer);
+        userCreateCorrectAnswer.forEach((e) => {
+          e.classList.remove("fill-question");
+        });
+        document.querySelector(".current-question").textContent = `${
+          currentQuestion.whichQuestion + 1
+        }/${totalQuestions}`;
 
-    userSubmitQuestionBtn.style.display = "none";
-    userCreateQuestionStartBtn.style.display = "flex";
+        document.querySelector(".write__question--input").value = "";
+        userCreateQuestionAnswer.forEach(function (e) {
+          e.value = "";
+        });
+
+        userCreateCorrectAnswer.forEach((e) =>
+          e.classList.remove("correct-answer")
+        );
+        userCorrectAnswer = "";
+        if (currentQuestion.lastQuestion) {
+          document.querySelector(".write__question").style.display = "none";
+          document.querySelector(".write__answers").style.display = "none";
+          document.querySelector(".write__correct").style.display = "none";
+          document.querySelector(".write__title").style.display = "none";
+
+          userSubmitQuestionBtn.style.display = "none";
+          userCreateQuestionStartBtn.style.display = "flex";
+        }
+        currentQuestion = currentQuestion.nextQuestion;
+      } else {
+        userCreateCorrectAnswer.forEach((e) => {
+          e.classList.add("fill-question");
+        });
+      }
+    } else {
+      userCreateQuestionAnswer.forEach((e) => {
+        e.classList.add("fill-question");
+      });
+    }
+  } else {
+    document
+      .querySelector(".write__question--input")
+      .classList.add("fill-question");
   }
-  currentQuestion = currentQuestion.nextQuestion;
+
   btnClick.play();
 });
 
