@@ -18,5 +18,5 @@
 
 # Avoid npm packages
 node_modules
-
+test
 # avoid sass to css changes
