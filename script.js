@@ -1170,6 +1170,8 @@ userSubmitQuestionBtn.addEventListener("click", () => {
     userAnswers.push(userCreateQuestionAnswer[3].value);
     currentQuestion.answers = userAnswers;
 
+
+
     if (
       currentQuestion.answers[0] &&
       currentQuestion.answers[1] &&
@@ -1180,10 +1182,16 @@ userSubmitQuestionBtn.addEventListener("click", () => {
         e.classList.remove("fill-question");
       });
 
+      if(currentQuestion.answers[0] !== currentQuestion.answers[1] && currentQuestion.answers[0] !== currentQuestion.answers[2] && currentQuestion.answers[0] !== currentQuestion.answers[3] && currentQuestion.answers[1] !== currentQuestion.answers[2] && currentQuestion.answers[1] !== currentQuestion.answers[3] && currentQuestion.answers[2] !== currentQuestion.answers[3] ){
+        userCreateQuestionAnswer.forEach((e) => {
+        e.classList.remove("fill-question");
+
+
+      });
+      
+
       currentQuestion.correctAnswer = userCorrectAnswer;
-      console.log(currentQuestion.correctAnswer);
       if (currentQuestion.correctAnswer) {
-        console.log(currentQuestion.correctAnswer);
         userCreateCorrectAnswer.forEach((e) => {
           e.classList.remove("fill-question");
         });
@@ -1213,13 +1221,22 @@ userSubmitQuestionBtn.addEventListener("click", () => {
       } else {
         userCreateCorrectAnswer.forEach((e) => {
           e.classList.add("fill-question");
+
+
         });
       }
     } else {
       userCreateQuestionAnswer.forEach((e) => {
         e.classList.add("fill-question");
+
       });
     }
+  }else{
+    userCreateQuestionAnswer.forEach((e) => {
+    e.classList.add("fill-question");
+
+  });
+  }
   } else {
     document
       .querySelector(".write__question--input")
